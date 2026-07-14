@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+/* ── Tema Glass Laranja (site público) + Dark Neon (área reservada) ── */
+@theme {
+  /* site público — segue os protótipos HTML glass */
+  --color-brand: #ff6b1a;
+  --color-brand-deep: #e25200;
+  --color-sun: #ffc93c;
+  --color-ink: #12161d;
+  --color-muted: #5b6673;
+  --color-paper: #f6f7f9;
+
+  /* área reservada (login / conta / backoffice) — dark neon */
+  --color-neon: #2ce66f;
+  --color-neon-dim: #17a04a;
+  --color-neon-cyan: #7df9ff;
+  --color-night: #0a0d0f;
+  --color-carbon: #12171c;
+  --color-mist: #1b2229;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-fog: #94a1ab;
+
+  --font-display: var(--font-barlow), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  --animate-modal-in: modal-in 200ms ease-out;
+  --animate-fade-in: fade-in 300ms ease-out;
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+body {
+  background-color: #f6f7f9;
+  background-image:
+    radial-gradient(600px 400px at 90% -10%, rgba(255, 201, 60, 0.25), transparent),
+    radial-gradient(700px 500px at -10% 30%, rgba(255, 107, 26, 0.12), transparent);
+  color: #12161d;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Utilitários glass ─────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid #fff;
+}
+.glass-dark {
+  background: rgba(18, 22, 29, 0.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+/* ── Utilitários da área reservada (dark neon) ─────────────────── */
+.neon-glow {
+  box-shadow: 0 0 20px rgba(44, 230, 111, 0.35), 0 0 44px rgba(44, 230, 111, 0.12);
+}
+
+.skeleton {
+  background: linear-gradient(100deg, #12171c 40%, #1b2229 50%, #12171c 60%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(18, 22, 29, 0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(18, 22, 29, 0.3); }
+
+/* ── Seletores de data ─────────────────────────────────────────── */
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='time']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
