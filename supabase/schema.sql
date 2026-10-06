@@ -50,6 +50,14 @@ create table if not exists public.reservas (
 -- (RLS), por isso não consegue saber qual é o número seguinte.
 create sequence if not exists public.reservas_ref_seq;
 grant usage on sequence public.reservas_ref_seq to authenticated;
+-- base com dados: a sequência continua a partir do maior número existente
+select setval('public.reservas_ref_seq',
+  coalesce((select max(substring(ref from '(\d+)$')::int) from public.reservas), 0) + 1, false);
+-- referências repetidas (versão anterior): a mais antiga fica, as outras são renumeradas
+update public.reservas r
+   set ref = 'SQ-' || to_char(r.created_at, 'YYYY') || '-' || lpad(nextval('public.reservas_ref_seq')::text, 4, '0')
+ where r.id in (select id from (select id, row_number() over (partition by ref order by created_at) as n
+                                  from public.reservas) d where d.n > 1);
 alter table public.reservas alter column ref set default
   'SQ-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.reservas_ref_seq')::text, 4, '0');
 create unique index if not exists reservas_ref_key on public.reservas (ref);
@@ -87,6 +95,12 @@ create table if not exists public.pedidos_contacto (
 
 create sequence if not exists public.pedidos_ref_seq;
 grant usage on sequence public.pedidos_ref_seq to authenticated;
+select setval('public.pedidos_ref_seq',
+  coalesce((select max(substring(ref from '(\d+)$')::int) from public.pedidos_contacto), 0) + 1, false);
+update public.pedidos_contacto p
+   set ref = 'CT-' || to_char(p.created_at, 'YYYY') || '-' || lpad(nextval('public.pedidos_ref_seq')::text, 4, '0')
+ where p.id in (select id from (select id, row_number() over (partition by ref order by created_at) as n
+                                  from public.pedidos_contacto) d where d.n > 1);
 alter table public.pedidos_contacto alter column ref set default
   'CT-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.pedidos_ref_seq')::text, 4, '0');
 create unique index if not exists pedidos_contacto_ref_key on public.pedidos_contacto (ref);
