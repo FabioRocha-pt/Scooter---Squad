@@ -25,3 +25,11 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+
+# material interno (não publicar: repo público)
+LEIA-ME-DEVELOPER.md
+scooter-quad-site/LEIA-ME-DEVELOPER.md
+*.zip
+entrega-ivandro/
+relatorios-fonte/
+graphify-out/
