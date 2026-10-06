@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre nós | Scooter &amp; Quad</title>
+<meta name="description" content="Empresa cabo-verdiana de aluguer de scooters e quads e excursões, fundada em 2022, com oficina própria em Mindelo e na Praia.">
+<meta property="og:title" content="Sobre nós | Scooter &amp; Quad">
+<meta property="og:image" content="img/B1-sao-vicente.jpg">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<section class="page-hero">
+  <div class="hero-bg" style="background-image:url('img/B1-sao-vicente.jpg')"></div>
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <span id="cr"></span></div>
+    <h1 id="t"></h1>
+    <p id="intro"></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container two">
+    <div>
+      <div class="panel">
+        <p class="lead" id="p1"></p>
+        <h3 id="servicosT"></h3>
+        <ul class="check" id="servicos"></ul>
+        <h3 id="segT"></h3>
+        <ul class="check" id="seg"></ul>
+        <h3 id="qualT"></h3>
+        <ul class="check" id="qual"></ul>
+      </div>
+    </div>
+    <div class="img-stack">
+      <img src="" id="im1" alt="Scooter &amp; Quad" loading="lazy">
+      <img src="" id="im2" alt="Scooter &amp; Quad" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Valores</span><h2 id="valoresT"></h2></div></div>
+    <div class="value-grid" id="valores"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="band center">
+      <div class="bg" style="background-image:url('img/A4-banda-contacto.jpg')"></div>
+      <div class="in">
+        <div>
+          <h2 id="missaoT"></h2>
+          <p id="missao"></p>
+          <p id="fecho" style="color:#EDF0F4"></p>
+        </div>
+        <a class="btn btn-orange" href="pedido.html" id="btnCta"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('sobre');
+const S = T.sobre;
+document.getElementById('cr').textContent = S.t;
+document.getElementById('t').textContent = S.t;
+document.getElementById('intro').textContent = S.intro;
+document.getElementById('p1').textContent = S.p1;
+document.getElementById('servicosT').textContent = S.servicosT;
+document.getElementById('segT').textContent = S.segT;
+document.getElementById('qualT').textContent = S.qualT;
+document.getElementById('valoresT').textContent = S.valoresT;
+document.getElementById('missaoT').textContent = S.missaoT;
+document.getElementById('missao').textContent = S.missao;
+document.getElementById('fecho').textContent = S.fecho;
+document.getElementById('btnCta').textContent = T.cta.reservar;
+document.getElementById('im1').src = IMGS.about1;
+document.getElementById('im2').src = IMGS.about2;
+const li = a => a.map(x => `<li>${x}</li>`).join('');
+document.getElementById('servicos').innerHTML = li(S.servicos);
+document.getElementById('seg').innerHTML = li(S.seg);
+document.getElementById('qual').innerHTML = li(S.qual);
+document.getElementById('stats').innerHTML = S.stats.map(s =>
+  `<div class="stat"><div class="n">${s.n}</div><p>${s.p}</p></div>`).join('');
+document.getElementById('valores').innerHTML = S.valores.map(v =>
+  `<div class="value-card"><h4>${v.n}</h4><p>${v.p}</p></div>`).join('');
+animarNumeros('.stat .n');
+finalizar();
+</script>
+</body>
+</html>

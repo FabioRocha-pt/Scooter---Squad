@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidade | Scooter &amp; Quad</title>
+<meta name="description" content="Como a Scooter & Quad recolhe, usa e protege os dados enviados através do site.">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" id="nav"></header>
+<div class="container narrow legal">
+  <div class="crumb" style="color:var(--slate)"><a href="index.html" style="color:var(--orange-d);font-weight:600">Home</a> / <span id="cr"></span></div>
+  <h1 id="t"></h1>
+  <div id="body"></div>
+</div>
+<footer id="footer"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('legal');
+document.getElementById('cr').textContent = T.legal.privT;
+document.getElementById('t').textContent = T.legal.privT;
+
+document.getElementById('body').innerHTML =
+  T.legal.priv.map(([h, p]) => `<h2>${h}</h2><p>${p}</p>`).join('');
+finalizar();
+</script>
+</body>
+</html>

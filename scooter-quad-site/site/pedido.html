@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enviar pedido | Scooter &amp; Quad</title>
+<meta name="description" content="Reserva o teu scooter ou quad, inscreve-te numa excursão ou pede orçamento de um veículo usado. Resposta no próprio dia.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+body{background-image:radial-gradient(600px 400px at 90% -10%,rgba(255,201,60,.25),transparent),
+                     radial-gradient(700px 500px at -10% 30%,rgba(255,107,26,.14),transparent)}
+.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin-top:26px;align-items:start}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.hideable{display:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<div class="container" style="padding:126px 24px 70px">
+  <div class="crumb" style="color:var(--slate)">
+    <a href="index.html" style="color:var(--orange-d);font-weight:600">Home</a> / <span id="crP"></span>
+  </div>
+
+  <div id="head">
+    <span class="kicker" id="fk"></span>
+    <h1 style="font-size:clamp(2rem,5vw,3.1rem);font-weight:800" id="ft"></h1>
+    <p class="muted" style="max-width:640px;margin-top:8px" id="fsub"></p>
+  </div>
+
+  <div class="layout" id="layout">
+    <div>
+      <div class="seg-box">
+        <span class="seg-label" id="segLabel"></span>
+        <div class="seg" id="seg"></div>
+      </div>
+      <form class="form-card" onsubmit="enviar(event)" novalidate>
+      <div class="fgrid">
+        <div class="field"><label for="nome" id="lNome"></label><input id="nome" required></div>
+        <div class="field"><label for="tel" id="lTel"></label><input id="tel" type="tel" required placeholder="+238 …"></div>
+        <div class="field"><label for="email" id="lEmail"></label><input id="email" type="email" required placeholder="nome@email.com"></div>
+        <div class="field"><label for="ilhaSel" id="lIlha"></label><select id="ilhaSel" required onchange="encher();sync()"></select></div>
+
+        <div class="field hideable" id="fServico"><label for="servico" id="lServico"></label><select id="servico" onchange="sync()"></select></div>
+        <div class="field hideable" id="fVeiculo"><label for="veiculo" id="lVeiculo"></label><select id="veiculo" onchange="sync()"></select></div>
+        <div class="field hideable" id="fPick"><label for="pick" id="lPick"></label><input id="pick" type="date" onchange="sync()"></div>
+        <div class="field hideable" id="fDrop"><label for="drop" id="lDrop"></label><input id="drop" type="date" onchange="sync()"></div>
+        <div class="field hideable" id="fPax"><label for="pax" id="lPax"></label><select id="pax" onchange="sync()"></select></div>
+        <div class="field hideable" id="fEntrega"><label for="entrega" id="lEntrega"></label><select id="entrega" onchange="sync()"></select></div>
+        <div class="field hideable" id="fModelo"><label for="modelo" id="lModelo"></label><select id="modelo" onchange="sync()"></select></div>
+
+        <div class="field full"><label for="msg" id="lMsg"></label><textarea id="msg" rows="4"></textarea></div>
+        <div class="field full chk">
+          <input type="checkbox" id="cond">
+          <label for="cond" style="text-transform:none;letter-spacing:0;font-size:.8rem;font-weight:500" id="lCond"></label>
+        </div>
+        <div class="field full">
+          <span class="err" id="err"></span>
+          <button class="btn btn-orange" type="submit" style="width:100%" id="bEnviar"></button>
+          <span class="muted" style="font-size:.74rem;text-align:center;margin-top:8px;display:block" id="nota"></span>
+        </div>
+      </div>
+      </form>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div class="sum-card">
+        <h3 id="rT"></h3>
+        <div class="sum-row"><span id="rTipo"></span><span id="sTipo"></span></div>
+        <div class="sum-row"><span id="rIlha"></span><span id="sIlha">-</span></div>
+        <div class="sum-row" id="rowServ"><span id="rServ"></span><span id="sServ">-</span></div>
+        <div class="sum-row" id="rowVeic"><span id="rVeic"></span><span id="sVeic">-</span></div>
+        <div class="sum-row" id="rowDatas"><span id="rDatas"></span><span id="sDatas">-</span></div>
+        <div class="sum-row" id="rowEnt"><span id="rEnt"></span><span id="sEnt">-</span></div>
+        <div class="sum-row"><span id="rDep"></span><span id="sDep"></span></div>
+      </div>
+
+      <div class="sum-card">
+        <h3 id="sgT"></h3>
+        <ul class="timeline" id="sgList"></ul>
+      </div>
+
+      <div class="sum-card">
+        <h3 id="jaT"></h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-wa" style="flex:1;font-size:.85rem;padding:11px 14px" href="https://wa.me/2389585176" id="waM">Mindelo</a>
+          <a class="btn btn-wa" style="flex:1;font-size:.85rem;padding:11px 14px" href="https://wa.me/2389544473" id="waP">Praia</a>
+        </div>
+        <div style="text-align:center;margin-top:10px;font-size:.82rem">
+          <a href="mailto:info@scooter-quad.com" style="color:var(--orange-d);font-weight:600">info@scooter-quad.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="success" id="ok">
+    <div class="ic">✓</div>
+    <h2 id="okT"></h2>
+    <div class="ref" id="ref"></div>
+    <p id="okP"></p>
+    <p style="font-size:.8rem" id="okRef"></p>
+    <div class="acts">
+      <a class="btn btn-orange" href="index.html" id="bVoltar"></a>
+      <a class="btn btn-wa" id="bWa" href="#"></a>
+      <button class="btn btn-line" onclick="novo()" id="bOutro"></button>
+    </div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('pedido');
+const F = T.form;
+const q = new URLSearchParams(location.search);
+let tipo = (q.get('tipo') && F.tipos[q.get('tipo')]) ? q.get('tipo') : 'reserva';
+if ((q.get('servico') || '').toLowerCase().includes('exc')) tipo = 'excursao';
+
+/* etiquetas */
+const set = (id, v) => document.getElementById(id).textContent = v;
+set('crP', F.t); set('fk', F.kicker); set('ft', F.t); set('fsub', F.sub);
+set('lNome', F.nome + ' *'); set('lTel', F.tel + ' *'); set('lEmail', F.email + ' *');
+set('lIlha', F.ilha + ' *'); set('lServico', F.servico); set('lVeiculo', F.veiculo);
+set('lPick', F.pick + ' *'); set('lDrop', F.drop); set('lPax', F.pax);
+set('lEntrega', F.entrega); set('lModelo', F.modelo + ' *'); set('lMsg', F.msg);
+set('lCond', F.condicoes); set('err', F.erro); set('bEnviar', F.enviar); set('nota', F.nota);
+set('rT', F.resumoT); set('rTipo', F.tipo); set('rIlha', F.ilha); set('rServ', F.servico);
+set('rVeic', F.veiculo); set('rDatas', F.datas); set('rEnt', F.entrega);
+set('rDep', F.deposito); set('sDep', F.depositoV);
+set('sgT', F.seguirT); set('jaT', F.jaT); set('segLabel', F.escolhe);
+set('okT', F.okT); set('okP', F.okP); set('okRef', F.okRef);
+set('bVoltar', T.cta.voltar); set('bOutro', F.outro);
+document.getElementById('msg').placeholder = F.msgPh;
+document.getElementById('sgList').innerHTML = F.seguir.map(s => `<li><b>${s.t}</b>${s.p}</li>`).join('');
+document.getElementById('seg').innerHTML = Object.entries(F.tipos).map(([k, v]) =>
+  `<button type="button" data-t="${k}" onclick="setTipo('${k}')">${v}</button>`).join('');
+document.getElementById('ilhaSel').innerHTML = `<option value="">${F.selecione}</option>` +
+  Object.values(ILHAS).map(i => `<option>${i.nome}, ${i.cidade}</option>`).join('') +
+  `<option>${T.produto.envio}</option>`;
+document.getElementById('pax').innerHTML = [1,2,3,4,5,6,8,10,12].map(n => `<option>${n}</option>`).join('');
+document.getElementById('entrega').innerHTML = F.entregaOp.map(o => `<option>${o}</option>`).join('');
+document.getElementById('modelo').innerHTML =
+  USADOS.map(u => `<option>${u.modelo} ${u.cc}</option>`).join('') + `<option>${F.tipos.orcamento}</option>`;
+document.getElementById('pick').value = q.get('pick') || hoje();
+document.getElementById('drop').value = q.get('drop') || amanha();
+document.getElementById('pick').min = hoje();
+document.getElementById('drop').min = hoje();
+
+if (q.get('ilha')) {
+  const alvo = q.get('ilha').toLowerCase();
+  [...document.getElementById('ilhaSel').options].forEach(o => {
+    if (o.text.toLowerCase().includes(alvo.split(',')[0].trim())) document.getElementById('ilhaSel').value = o.text;
+  });
+}
+if (q.get('modelo')) {
+  const alvo = q.get('modelo').toLowerCase().slice(0, 12);
+  [...document.getElementById('modelo').options].forEach(o => {
+    if (o.text.toLowerCase().startsWith(alvo)) document.getElementById('modelo').value = o.text;
+  });
+}
+
+function setTipo(k) { tipo = k; pintar(); refresh(); }
+function pintar() {
+  document.querySelectorAll('#seg button').forEach(b => b.classList.toggle('on', b.dataset.t === tipo));
+}
+const mostra = (id, on) => document.getElementById(id).style.display = on ? 'flex' : 'none';
+
+function encher() {
+  const ilha = document.getElementById('ilhaSel').value;
+  const k = ilha.includes('Vicente') ? 'sv' : ilha.includes('Santiago') ? 'st' : null;
+  const sv = document.getElementById('servico'), ve = document.getElementById('veiculo');
+  if (tipo === 'excursao') {
+    sv.innerHTML = EXCURSOES.map(e =>
+      `<option>${e.horas} ${T.precos.horas} · ${fmtEUR(e.duplo)} ${T.precos.excDuplo} / ${fmtEUR(e.individual)} ${T.precos.excInd}</option>`).join('');
+  } else {
+    const ops = [T.svc.scT, T.svc.qdT, T.svc.ldT];
+    sv.innerHTML = ops.map(o => `<option>${o}</option>`).join('');
+  }
+  const lista = k ? FROTA[k] : FROTA.sv;
+  ve.innerHTML = lista.map(f => `<option>${f.n} · ${f.cc}</option>`).join('') + `<option>${F.selecione}</option>`;
+}
+
+function refresh() {
+  const aluguer = tipo === 'reserva', exc = tipo === 'excursao', compra = tipo === 'compra';
+  const info = tipo === 'orcamento' || tipo === 'ficha';
+  mostra('fServico', aluguer || exc); mostra('fVeiculo', aluguer);
+  mostra('fPick', aluguer || exc); mostra('fDrop', aluguer);
+  mostra('fPax', exc); mostra('fEntrega', aluguer); mostra('fModelo', compra || info);
+  document.getElementById('rowServ').style.display = (aluguer || exc) ? 'flex' : 'none';
+  document.getElementById('rowVeic').style.display = (aluguer || compra || info) ? 'flex' : 'none';
+  document.getElementById('rowDatas').style.display = (aluguer || exc) ? 'flex' : 'none';
+  document.getElementById('rowEnt').style.display = aluguer ? 'flex' : 'none';
+  encher(); sync();
+}
+
+function sync() {
+  const g = id => document.getElementById(id).value;
+  set('sTipo', F.tipos[tipo]);
+  set('sIlha', g('ilhaSel') || '-');
+  set('sServ', g('servico') || '-');
+  set('sVeic', (tipo === 'compra' || tipo === 'orcamento' || tipo === 'ficha') ? g('modelo') : (g('veiculo') || '-'));
+  set('sDatas', g('pick') ? (tipo === 'excursao' ? g('pick') : g('pick') + (g('drop') ? ' → ' + g('drop') : '')) : '-');
+  set('sEnt', g('entrega'));
+}
+
+function enviar(e) {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value.trim();
+  const nome = g('nome'), tel = g('tel'), email = g('email'), ilha = g('ilhaSel');
+  if (!nome || !tel || !email || !ilha || !document.getElementById('cond').checked) {
+    document.getElementById('err').style.display = 'block'; return;
+  }
+  document.getElementById('err').style.display = 'none';
+
+  const n = (parseInt(localStorage.getItem('sq-n') || '0') + 1);
+  localStorage.setItem('sq-n', n);
+  const ref = 'SQ-' + new Date().getFullYear() + '-' + String(n).padStart(4, '0');
+
+  const L = [];
+  const add = (k, v) => { if (v) L.push(k + ': ' + v); };
+  add('Ref', ref); add(F.tipo, F.tipos[tipo]); add(F.nome, nome);
+  add(F.tel, tel); add(F.email, email); add(F.ilha, ilha);
+  if (tipo === 'reserva' || tipo === 'excursao') add(F.servico, g('servico'));
+  if (tipo === 'reserva') { add(F.veiculo, g('veiculo')); add(F.entrega, g('entrega')); }
+  if (tipo === 'compra' || tipo === 'orcamento' || tipo === 'ficha') add(F.modelo, g('modelo'));
+  if (tipo === 'reserva' || tipo === 'excursao') add(F.pick, g('pick'));
+  if (tipo === 'reserva') add(F.drop, g('drop'));
+  if (tipo === 'excursao') add(F.pax, g('pax'));
+  add(F.msg, g('msg'));
+
+  const assunto = `[${ref}] ${F.tipos[tipo]} · ${ilha}`;
+  const corpo = L.join('\n');
+
+  /* Encaminhamento por ilha, pedido na reunião de setembro:
+     Mindelo vai para reservas.mindelo, Praia vai para reservas.praia. */
+  const daPraia = ilha.includes('Santiago') || ilha.includes('Praia');
+  const wa      = daPraia ? CONTACTOS.praia.link  : CONTACTOS.mindelo.link;
+  const destino = daPraia ? CONTACTOS.praia.email : CONTACTOS.mindelo.email;
+
+  location.href = `mailto:${destino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+
+  document.getElementById('ref').textContent = ref;
+  const b = document.getElementById('bWa');
+  b.href = wa + '?text=' + encodeURIComponent(assunto + '\n' + corpo);
+  b.innerHTML = SVG_WA + ' ' + T.cta.wa;
+  document.getElementById('layout').style.display = 'none';
+  document.getElementById('head').style.display = 'none';
+  document.getElementById('ok').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function novo() {
+  document.getElementById('layout').style.display = 'grid';
+  document.getElementById('head').style.display = 'block';
+  document.getElementById('ok').style.display = 'none';
+}
+
+document.getElementById('waM').insertAdjacentHTML('afterbegin', SVG_WA);
+document.getElementById('waP').insertAdjacentHTML('afterbegin', SVG_WA);
+pintar(); refresh();
+finalizar();
+</script>
+</body>
+</html>

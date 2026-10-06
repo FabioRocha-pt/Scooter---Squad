@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taro Huracan T12 400cc usada | Scooter &amp; Quad</title>
+<meta name="description" content="Taro Huracan T12 400cc usada, da frota Scooter & Quad, revista na nossa oficina. Preço e quilometragem sob consulta. Envio para todas as ilhas.">
+<meta property="og:title" content="Taro Huracan T12 400cc usada | Scooter &amp; Quad">
+<meta property="og:image" content="https://www.scooter-quad.com/img/U-t12-venda-1.jpg">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<div class="container" style="padding-top:118px">
+  <div class="crumb" style="color:var(--slate)">
+    <a href="index.html" style="color:var(--orange-d);font-weight:600">Home</a> /
+    <a href="usados.html" style="color:var(--orange-d);font-weight:600" id="crU"></a> / Taro Huracan T12
+  </div>
+
+  <div class="two two-prod">
+    <div class="gallery" id="gal"></div>
+
+    <div class="buy-card">
+      <span class="tag" id="tipo"></span>
+      <h1>Taro Huracan T12</h1>
+      <div class="muted" style="font-size:.85rem" id="ccLine"></div>
+
+      <div class="price-box">
+        <div class="p" id="precoT"></div>
+        <small id="precoS"></small>
+      </div>
+
+      <div class="field" style="margin:14px 0">
+        <label id="lOnde"></label>
+        <select id="onde"></select>
+      </div>
+
+      <div class="note-box" style="margin-bottom:16px" id="oficina"></div>
+
+      <button class="btn btn-orange" style="width:100%" onclick="comprar()" id="bComprar"></button>
+      <button class="btn btn-line" style="width:100%;margin-top:8px" onclick="fotos()" id="bFotos"></button>
+
+      <div class="trust" id="trust"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="two">
+      <div class="panel">
+        <h2 id="sobreT"></h2>
+        <p id="sobreP1"></p>
+        <p id="sobreP2"></p>
+        <h2 style="margin-top:22px" id="incluiT"></h2>
+        <ul class="check" id="inclui"></ul>
+      </div>
+      <div class="panel">
+        <h2 id="fichaT"></h2>
+        <table class="spec-table" id="ficha"></table>
+        <p class="muted" style="font-size:.78rem;margin-top:12px" id="fichaNota"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="sec-head"><div><span class="kicker">+</span><h2 id="outrosT"></h2></div></div>
+    <div class="grid3" id="outros"></div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('usados');
+const P = T.produto, U = T.usados;
+const CAR = USADOS[0];
+const FOTOS = [
+  ...CAR.imgs,
+  'img/U-t12-venda-2.jpg',
+  'img/C3-aluguer-scooter.jpg',
+  'img/A2-hero-loja.jpg'
+];
+
+document.getElementById('crU').textContent = T.nav.usados;
+document.getElementById('tipo').textContent = 'Scooter · ' + U.usada;
+document.getElementById('ccLine').textContent = CAR.cc + ' · ' + P.f.carta + ' ' + CAR.carta;
+document.getElementById('precoT').textContent = P.precoT;
+document.getElementById('precoS').textContent = P.precoS;
+document.getElementById('lOnde').textContent = P.ondeVer;
+document.getElementById('oficina').textContent = '🔧 ' + P.oficina;
+document.getElementById('bComprar').textContent = P.comprar;
+document.getElementById('bFotos').textContent = P.fotos;
+document.getElementById('sobreT').textContent = P.sobreT;
+document.getElementById('sobreP1').textContent = P.sobreP1;
+document.getElementById('sobreP2').textContent = P.sobreP2;
+document.getElementById('incluiT').textContent = P.incluiT;
+document.getElementById('fichaT').textContent = P.fichaT;
+document.getElementById('fichaNota').textContent = P.fichaNota;
+document.getElementById('outrosT').textContent = P.outrosT;
+
+document.getElementById('onde').innerHTML =
+  `<option>Mindelo, São Vicente</option><option>Praia, Santiago</option><option>${P.envio}</option>`;
+
+document.getElementById('gal').innerHTML = `
+  <div class="main">
+    <span class="badge rev">${U.revista}</span>
+    <span class="badge2">${U.usada} · ${U.disponiveis}</span>
+    <img id="mainImg" src="${FOTOS[0]}" alt="Taro Huracan T12 400cc">
+  </div>
+  ${FOTOS.map((f, i) => `<div class="thumb ${i === 0 ? 'on' : ''}" onclick="troca(this,'${f}')"><img src="${f}" alt="" loading="lazy"></div>`).join('')}`;
+
+document.getElementById('trust').innerHTML =
+  [P.t1, P.t2, P.t3, P.t4].map(t => `<div><span>✓</span> ${t}</div>`).join('');
+document.getElementById('inclui').innerHTML = P.inclui.map(x => `<li>${x}</li>`).join('');
+
+document.getElementById('ficha').innerHTML = [
+  [P.f.modelo, 'Taro Huracan T12'], [P.f.tipo, P.fv.scooter], [P.f.cc, CAR.cc],
+  [P.f.carta, CAR.carta], [P.f.estado, P.fv.usada], [P.f.km, P.fv.km],
+  [P.f.prov, P.fv.prov], [P.f.lugares, P.fv.lugares], [P.f.entrega, P.fv.entrega]
+].map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join('');
+
+document.getElementById('outros').innerHTML = USADOS.filter(u => u.id !== CAR.id && u.estado === 'disponivel')
+  .map(cartaoUsado).join('');
+
+function troca(t, src) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(x => x.classList.remove('on'));
+  t.classList.add('on');
+}
+function comprar() {
+  location.href = 'pedido.html?tipo=compra&modelo=' + encodeURIComponent('Taro Huracan T12 400 cc') +
+    '&ilha=' + encodeURIComponent(document.getElementById('onde').value);
+}
+function pedir(m) { location.href = 'pedido.html?tipo=compra&modelo=' + encodeURIComponent(m); }
+function fotos() {
+  location.href = 'pedido.html?tipo=ficha&modelo=' + encodeURIComponent('Taro Huracan T12 400 cc');
+}
+finalizar();
+</script>
+</body>
+</html>

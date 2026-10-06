@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praia, Santiago | Scooter &amp; Quad</title>
+<meta name="description" content="Aluguer de scooters e quads na Praia, ilha de Santiago. À hora, ao dia ou em longa duração. Capacetes e seguro incluídos.">
+<meta property="og:title" content="Praia, Santiago | Scooter &amp; Quad">
+<meta property="og:description" content="Aluguer de scooters e quads na cidade da Praia, ilha de Santiago.">
+<meta property="og:image" content="img/B2-santiago.jpg">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<section class="page-hero">
+  <div class="hero-bg" id="phBg"></div>
+  <div class="container">
+    <div class="crumb" id="phCrumb"></div>
+    <h1 id="phT"></h1>
+    <p id="phP"></p>
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-orange" href="pedido.html" id="btnRes">Reservar</a>
+      <a class="btn btn-glass" href="#precos" id="btnPrec">Preços</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="excSection">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Santiago</span><h2 id="excT"></h2></div><p id="excS"></p></div>
+    <div class="two">
+      <div>
+        <div id="excRota"></div>
+        <div style="margin-top:18px" id="excPrecos"></div>
+      </div>
+      <div style="border-radius:var(--radius);min-height:320px;background-size:cover;background-position:center;box-shadow:0 12px 32px rgba(18,22,29,.12)" id="excImg"></div>
+    </div>
+    <div class="value-grid" id="excBlocos" style="margin-top:22px"></div>
+  </div>
+</section>
+
+<section class="section fleet-band" id="frota">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Frota</span><h2 id="frotaT"></h2></div><p id="frotaS"></p></div>
+    <div class="fleet-scroll" id="fleet"></div>
+  </div>
+</section>
+
+<section class="section" id="precos">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Tarifas</span><h2 id="precosT"></h2></div><p id="precosS"></p></div>
+    <div id="precosBox"></div>
+  </div>
+</section>
+
+<section class="section" id="como">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Info</span><h2 id="comoT"></h2></div></div>
+    <div id="infoGrid"></div>
+    <div id="hours"></div>
+  </div>
+</section>
+
+<section class="section" id="contactos">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Contactos</span><h2 id="ondeT"></h2></div></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 id="ctIsland"></h3>
+        <div style="margin-top:14px" id="ctRows"></div>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn btn-wa" id="ctWaBtn" href="#" style="flex:1"></a>
+          <a class="btn btn-line" href="pedido.html" style="flex:1" id="ctPedido"></a>
+        </div>
+      </div>
+      <iframe class="map-frame" id="ctMap" title="Mapa" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">FAQ</span><h2 id="faqT"></h2></div></div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>const ILHA_ID = 'st';</script>
+<script src="assets/pagina-ilha.js"></script>
+<script>
+document.getElementById('btnRes').textContent = T.cta.reservar;
+document.getElementById('btnPrec').textContent = T.nav.precos;
+</script>
+</body>
+</html>

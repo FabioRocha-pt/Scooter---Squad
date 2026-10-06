@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scooters e quads usados à venda | Scooter &amp; Quad</title>
+<meta name="description" content="Scooters e quads usados da nossa frota, revistos na oficina antes da venda. Envio para todas as ilhas de Cabo Verde.">
+<meta property="og:title" content="Scooters e quads usados à venda | Scooter &amp; Quad">
+<meta property="og:image" content="img/A2-hero-loja.jpg">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<section class="page-hero">
+  <div class="hero-bg" style="background-image:url('img/A2-hero-loja.jpg');background-position:center 45%"></div>
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <span id="cr"></span></div>
+    <h1><span id="t1"></span> <em id="t2"></em></h1>
+    <p id="sub"></p>
+  </div>
+</section>
+
+<div class="filter-wrap container">
+  <div class="filters" id="filters"></div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="band center" style="margin-bottom:26px;min-height:0">
+      <div class="bg" style="background-image:url('img/C3-aluguer-scooter.jpg');background-position:center 40%"></div>
+      <div class="in" style="padding:26px 30px">
+        <div><h2 style="font-size:1.4rem" id="notaT"></h2><p id="notaP" style="margin-bottom:0"></p></div>
+      </div>
+    </div>
+    <div class="grid3" id="grid"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Passo a passo</span><h2 id="comoT"></h2></div></div>
+    <div class="info-grid" id="passos"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:10px">
+  <div class="container">
+    <div class="band center">
+      <div class="bg" style="background-image:url('img/A4-banda-contacto.jpg');background-position:center 35%"></div>
+      <div class="in">
+        <div><h2 id="dT"></h2><p id="dP"></p></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-wa" href="https://wa.me/2389585176" id="waM">WhatsApp Mindelo</a>
+          <a class="btn btn-wa" href="https://wa.me/2389544473" id="waP">WhatsApp Praia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('usados');
+const U = T.usados;
+document.getElementById('cr').textContent = T.nav.usados;
+document.getElementById('t1').textContent = U.t1;
+document.getElementById('t2').textContent = U.t2;
+document.getElementById('sub').textContent = U.sub;
+document.getElementById('notaT').textContent = U.notaT;
+document.getElementById('notaP').textContent = U.notaP;
+document.getElementById('comoT').textContent = U.comoT;
+document.getElementById('dT').textContent = U.duvidasT;
+document.getElementById('dP').textContent = U.duvidasP;
+
+document.getElementById('passos').innerHTML = U.passos.map((p, i) =>
+  `<div class="info"><div class="ic" style="font-family:var(--display);font-weight:800;color:var(--orange)">${i + 1}</div>
+   <h4>${p.t}</h4><p>${p.p}</p></div>`).join('');
+
+document.getElementById('filters').innerHTML = `
+  <button class="chip tab-btn on" data-f="all" onclick="filtra(this)">${U.todos}</button>
+  <button class="chip tab-btn" data-f="scooter" onclick="filtra(this)">${U.scooters}</button>
+  <button class="chip tab-btn" data-f="quad" onclick="filtra(this)">${U.quads}</button>
+  <span class="sep"></span>
+  <button class="chip tab-btn" data-f="disponivel" onclick="filtra(this)">${U.disponiveis}</button>
+  <span class="sep"></span>
+  <select id="ord" onchange="ordena()">
+    <option value="rel">${U.ordenar}</option>
+    <option value="asc">${U.ccAsc}</option>
+    <option value="desc">${U.ccDesc}</option>
+  </select>
+  <span class="count" id="count"></span>`;
+
+document.getElementById('grid').innerHTML = USADOS.map(cartaoUsado).join('');
+
+const cards = [...document.querySelectorAll('.prod')];
+let fT = 'all', fS = 'all';
+function aplica() {
+  let n = 0;
+  cards.forEach(c => {
+    const ok = (fT === 'all' || c.dataset.type === fT) && (fS === 'all' || c.dataset.state === fS);
+    c.classList.toggle('hidden', !ok); if (ok) n++;
+  });
+  document.getElementById('count').textContent = n + ' ' + (n === 1 ? U.veiculo : U.veiculos);
+}
+function filtra(b) {
+  const f = b.dataset.f;
+  if (f === 'all') { fT = 'all'; fS = 'all'; }
+  else if (f === 'scooter' || f === 'quad') fT = (fT === f) ? 'all' : f;
+  else fS = (fS === f) ? 'all' : f;
+  document.querySelectorAll('.chip').forEach(c => {
+    const cf = c.dataset.f;
+    c.classList.toggle('on', (cf === 'all' && fT === 'all' && fS === 'all') || (cf === fT && cf !== 'all') || (cf === fS && cf !== 'all'));
+  });
+  aplica();
+}
+function ordena() {
+  const v = document.getElementById('ord').value, g = document.getElementById('grid');
+  if (v === 'rel') return;
+  [...g.children].sort((a, b) => v === 'asc' ? a.dataset.cc - b.dataset.cc : b.dataset.cc - a.dataset.cc)
+    .forEach(el => g.appendChild(el));
+}
+function pedir(m) { location.href = 'pedido.html?tipo=compra&modelo=' + encodeURIComponent(m); }
+['waM','waP'].forEach(i=>document.getElementById(i).insertAdjacentHTML('afterbegin', SVG_WA));
+aplica();
+finalizar();
+</script>
+</body>
+</html>

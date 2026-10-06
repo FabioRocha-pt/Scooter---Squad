@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scooter &amp; Quad | Aluguer de scooters e quads e excursões em Cabo Verde</title>
+<meta name="description" content="Aluguer de scooters e quads em São Vicente (Mindelo) e Santiago (Praia), e excursões guiadas de quad de 2 e 4 horas. Capacetes e seguro incluídos. Desde 32 €/dia.">
+<link rel="canonical" href="https://www.scooter-quad.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scooter &amp; Quad | Vive Cabo Verde sobre duas ou quatro rodas">
+<meta property="og:description" content="Excursões guiadas de quad em São Vicente e aluguer de scooters e quads nas duas ilhas.">
+<meta property="og:image" content="img/A1-hero-home.jpg">
+<meta property="og:locale" content="pt_PT">
+<meta name="theme-color" content="#FF6B1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav"></header>
+
+<section class="hero" id="reservar">
+  <div class="hero-bg" style="background-image:url('img/A1-hero-home.jpg')"></div>
+  <div class="container">
+    <span class="kicker" style="color:var(--yellow)" id="hKicker"></span>
+    <h1><span id="hT1"></span><br><em id="hT2"></em></h1>
+    <p class="sub" id="hSub"></p>
+    <div class="accent-bar"></div>
+  </div>
+  <div class="search-wrap">
+    <div class="container">
+      <form class="search" onsubmit="pesquisar(event)">
+        <div class="field"><label id="lIlha"></label>
+          <select id="qIlha" onchange="setIlha(this.value)"></select></div>
+        <div class="field"><label id="lPick"></label><input type="date" id="qPick"></div>
+        <div class="field"><label id="lDrop"></label><input type="date" id="qDrop"></div>
+        <div class="field"><label id="lServ"></label><select id="qServ"></select></div>
+        <button class="go" aria-label="OK">➜</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ilhas">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="kicker" id="k1"></span><h2 id="ilhasT"></h2></div>
+      <p id="ilhasS"></p>
+    </div>
+    <div class="islands" id="islands"></div>
+  </div>
+</section>
+
+<section class="section section-tight" id="servicos">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="kicker" id="k2"></span><h2 id="svcT"></h2></div>
+      <p id="svcS"></p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<section class="section fleet-band" id="frota">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="kicker" id="k3"></span><h2 id="frotaT"></h2></div>
+      <p id="frotaS"></p>
+    </div>
+    <div class="fleet-scroll" id="fleet"></div>
+    <div style="margin-top:6px"><a class="btn btn-line" id="verIlha" href="#"></a></div>
+  </div>
+</section>
+
+<section class="section" id="carros">
+  <div id="carrosBox"></div>
+</section>
+
+<section class="section" id="avaliacoes">
+  <div class="container" id="avaliacoesBox"></div>
+</section>
+
+<section class="section" id="precos">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="kicker" id="k4"></span><h2 id="precosT"></h2></div>
+      <p id="precosS"></p>
+    </div>
+    <div id="precosBox"></div>
+  </div>
+</section>
+
+<section class="section" id="como">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker" id="k5"></span><h2 id="comoT"></h2></div><p id="comoS"></p></div>
+    <div id="infoGrid"></div>
+    <div id="seguroBox"></div>
+    <div id="hours"></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">FAQ</span><h2 id="faqT"></h2></div><p id="faqS"></p></div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="section section-tight" id="usados">
+  <div class="container">
+    <div class="band">
+      <div class="bg" style="background-image:url('img/A3-banda-usados.jpg')"></div>
+      <div class="in">
+        <span class="kicker" style="color:var(--yellow)" id="uK"></span>
+        <h2><span id="uT1"></span> <span id="uT2"></span></h2>
+        <p id="uP"></p>
+        <a class="btn btn-orange" href="usados.html" id="uB"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contactos">
+  <div class="container">
+    <div class="sec-head"><div><span class="kicker">Contactos</span><h2 id="ctT"></h2></div><p id="ctS"></p></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 id="ctIsland"></h3>
+        <div style="margin-top:14px" id="ctRows"></div>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn btn-wa" id="ctWaBtn" href="#" style="flex:1"></a>
+          <a class="btn btn-line" href="pedido.html" style="flex:1" id="ctPedido"></a>
+        </div>
+      </div>
+      <iframe class="map-frame" id="ctMap" title="Mapa" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+<script>
+bootstrap('home');
+
+let ilha = localStorage.getItem('sq-ilha') || 'sv';
+if (!ILHAS[ilha]) ilha = 'sv';
+
+/* textos fixos */
+document.getElementById('hKicker').textContent = T.hero.kicker;
+document.getElementById('hT1').textContent = T.hero.t1;
+document.getElementById('hT2').textContent = T.hero.t2;
+document.getElementById('hSub').textContent = T.hero.sub;
+document.getElementById('lIlha').textContent = T.busca.ilha;
+document.getElementById('lPick').textContent = T.busca.pick;
+document.getElementById('lDrop').textContent = T.busca.drop;
+document.getElementById('lServ').textContent = T.busca.servico;
+document.getElementById('k1').textContent = T.passos.p1;
+document.getElementById('k2').textContent = T.passos.p2;
+document.getElementById('k3').textContent = T.passos.p3;
+document.getElementById('k4').textContent = T.passos.p4;
+document.getElementById('k5').textContent = T.passos.p5;
+document.getElementById('ilhasT').textContent = T.home.ilhasT;
+document.getElementById('ilhasS').textContent = T.home.ilhasS;
+document.getElementById('frotaS').textContent = T.home.frotaS;
+document.getElementById('precosT').textContent = T.home.precosT;
+document.getElementById('precosS').textContent = T.home.precosS;
+document.getElementById('comoT').textContent = T.home.comoT;
+document.getElementById('comoS').textContent = T.home.comoS;
+document.getElementById('faqT').textContent = T.home.faqT;
+document.getElementById('faqS').textContent = T.home.faqS;
+document.getElementById('uK').textContent = T.home.usadosK;
+document.getElementById('uT1').textContent = T.home.usadosT1;
+document.getElementById('uT2').innerHTML = '<span style="color:var(--yellow)">' + T.home.usadosT2 + '</span>';
+document.getElementById('uP').textContent = T.home.usadosP;
+document.getElementById('uB').textContent = T.home.usadosB;
+document.getElementById('ctS').textContent = T.home.contactosS;
+document.getElementById('ctPedido').textContent = T.cta.pedir;
+
+/* cartões de ilha */
+document.getElementById('islands').innerHTML = Object.entries(ILHAS).map(([k, d]) => {
+  const svc = d.excursoes
+    ? [T.svc.exc4Tag + ' / ' + T.svc.exc2Tag.split('·')[1].trim(), T.svc.scTag + ' · scooter', T.svc.qdTag + ' · quad']
+    : [T.svc.scTag + ' · scooter', T.svc.qdTag + ' · quad', T.svc.ldT];
+  return `<div class="island" id="isl-${k}" onclick="setIlha('${k}')">
+    <div class="bg" style="background-image:url('${d.img}')"></div><div class="veil"></div>
+    <span class="pick" id="pick-${k}"></span>
+    <div class="in"><div class="city">${d.cidade}</div><h3>${d.nome}</h3>
+      <div class="svc">${svc.map(s => `<span>${s}</span>`).join('')}</div></div>
+  </div>`;
+}).join('');
+
+/* info + horário */
+renderComoFunciona(document.getElementById('infoGrid'));
+renderHorario(document.getElementById('hours'));
+renderFaq(document.getElementById('faqList'));
+
+/* dependente da ilha */
+function setIlha(k) {
+  ilha = k; localStorage.setItem('sq-ilha', k);
+  const d = ILHAS[k];
+  Object.keys(ILHAS).forEach(x => {
+    document.getElementById('isl-' + x).classList.toggle('on', x === k);
+    document.getElementById('pick-' + x).textContent = (x === k) ? '✓' : T.cta.saber;
+  });
+  document.getElementById('qIlha').value = k;
+  document.getElementById('svcT').textContent = T.home.servicosT + ' ' + d.nome;
+  document.getElementById('svcS').textContent = d.excursoes ? T.home.servicosSv : T.home.servicosSt;
+  document.getElementById('frotaT').textContent = T.home.frotaT + ' ' + d.nome;
+  document.getElementById('ctT').textContent = T.home.contactosT + ' ' + d.nome;
+  document.getElementById('ctIsland').textContent = d.cidade + ', ' + d.nome;
+
+  /* Cada serviço leva um texto próprio a explicar o que a pessoa vai fazer,
+     pedido na reunião de setembro. Só entram as excursões marcadas como ativas. */
+  const svc = [];
+  if (d.excursoes) {
+    EXCURSOES_ATIVAS.forEach(e => {
+      const dois = e.horas === 2;
+      svc.push({
+        tag: dois ? T.svc.exc2Tag : T.svc.exc4Tag,
+        t: e.nome,
+        m: dois ? T.svc.exc2M : T.svc.exc4M,
+        desc: dois ? T.svcDesc.exc2 : T.svcDesc.exc4,
+        from: T.svc.desde, v: fmtEUR(e.individual),
+        img: dois ? 'img/C2-excursao-2h.jpg' : 'img/C1-excursao-4h.jpg',
+        q: 'excursao'
+      });
+    });
+  }
+  svc.push({ tag: T.svc.scTag, t: T.svc.scT, m: T.svc.scM, desc: T.svcDesc.sc, from: T.svc.desde, v: fmtEUR(32) + '<span style="font-size:.9rem">' + T.svc.dia + '</span>', img: 'img/C3-aluguer-scooter.jpg', q: 'reserva' });
+  svc.push({ tag: T.svc.qdTag, t: T.svc.qdT, m: T.svc.qdM, desc: T.svcDesc.qd, from: T.svc.desde, v: fmtEUR(100), img: 'img/C4-aluguer-quad.jpg', q: 'reserva' });
+  if (!d.excursoes) svc.push({ tag: T.svc.ldTag, t: T.svc.ldT, m: T.svc.ldM, desc: T.svcDesc.ld, from: '', v: T.svc.proposta, img: 'img/C5-longa-duracao.jpg', q: 'reserva' });
+
+  document.getElementById('svcGrid').innerHTML = svc.map(s => `
+    <article class="svc-card">
+      <div class="svc-media">
+        <span class="tag">${s.tag}</span>
+        <img src="${s.img}" alt="${s.t}" loading="lazy">
+      </div>
+      <div class="svc-body">
+        <h3>${s.t}</h3><div class="meta">${s.m}</div>
+        <p class="svc-desc">${s.desc}</p>
+        <div class="row">
+          <div>${s.from ? `<div class="from">${s.from}</div>` : ''}<div class="val">${s.v}</div></div>
+          <a class="go2" href="pedido.html?tipo=${s.q}&amp;ilha=${encodeURIComponent(d.nome)}&amp;servico=${encodeURIComponent(s.t)}">${T.cta.reservar} <span>→</span></a>
+        </div>
+      </div>
+    </article>`).join('');
+
+  document.getElementById('fleet').innerHTML = cartoesFrota(FROTA[k]);
+  const vi = document.getElementById('verIlha');
+  vi.textContent = T.home.verIlha + ' ' + d.nome; vi.href = d.pagina;
+
+  document.getElementById('ctRows').innerHTML = `
+    <div class="rowc">📍 <b>${T.ilha.ondeT}</b><span class="v">${d.morada}</span></div>
+    <div class="rowc"><span class="rc-ic">${SVG_WA}</span> <b>WhatsApp</b><a class="v" href="${d.waLink}">${d.wa}</a></div>
+    <div class="rowc">✉ <b>Email</b><a class="v" href="mailto:${d.email}">${d.email}</a></div>
+    <div class="rowc">🕘 <b>${T.horario.aberturaT}</b><span class="v">${HORARIO.manhaAbre}-${HORARIO.manhaFecha} · ${HORARIO.tardeAbre}-${HORARIO.tardeFecha}</span></div>`;
+  const wb = document.getElementById('ctWaBtn'); wb.href = d.waLink; wb.innerHTML = SVG_WA + ' ' + T.cta.wa;
+  document.getElementById('ctMap').src = d.mapa;
+
+  const sel = document.getElementById('qServ');
+  const ops = d.excursoes
+    ? EXCURSOES_ATIVAS.map(e => e.nome).concat([T.svc.scT, T.svc.qdT])
+    : [T.svc.scT, T.svc.qdT, T.svc.ldT];
+  if (temCarros(k)) ops.push(T.carros.t);
+  sel.innerHTML = ops.map(o => `<option>${o}</option>`).join('');
+
+  renderPrecos(document.getElementById('precosBox'), d.excursoes, k);
+
+  /* o aluguer de automóveis só existe em Santiago, por isso segue a ilha escolhida */
+  renderCarros(document.getElementById('carrosBox'), k);
+}
+
+/* secções acrescentadas depois da reunião de setembro */
+renderAvaliacoes(document.getElementById('avaliacoesBox'));
+renderSeguroDestaque(document.getElementById('seguroBox'));
+
+document.getElementById('qIlha').innerHTML =
+  Object.entries(ILHAS).map(([k, d]) => `<option value="${k}">${d.nome}, ${d.cidade}</option>`).join('');
+document.getElementById('qPick').value = hoje();
+document.getElementById('qDrop').value = amanha();
+document.getElementById('qPick').min = hoje();
+document.getElementById('qDrop').min = hoje();
+
+function pesquisar(e) {
+  e.preventDefault();
+  const p = new URLSearchParams({
+    tipo: document.getElementById('qServ').value.toLowerCase().includes('exc') ? 'excursao' : 'reserva',
+    ilha: ILHAS[ilha].nome,
+    servico: document.getElementById('qServ').value,
+    pick: document.getElementById('qPick').value,
+    drop: document.getElementById('qDrop').value
+  });
+  location.href = 'pedido.html?' + p.toString();
+}
+
+setIlha(ilha);
+finalizar();
+</script>
+</body>
+</html>
