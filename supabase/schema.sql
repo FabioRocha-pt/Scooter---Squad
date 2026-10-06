@@ -46,6 +46,14 @@ create table if not exists public.reservas (
   created_at timestamptz not null default now()
 );
 
+-- A referência é gerada pela base de dados: o cliente só vê as próprias reservas
+-- (RLS), por isso não consegue saber qual é o número seguinte.
+create sequence if not exists public.reservas_ref_seq;
+grant usage on sequence public.reservas_ref_seq to authenticated;
+alter table public.reservas alter column ref set default
+  'SQ-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.reservas_ref_seq')::text, 4, '0');
+create unique index if not exists reservas_ref_key on public.reservas (ref);
+
 alter table public.reservas enable row level security;
 
 drop policy if exists "reservas_select" on public.reservas;
@@ -54,7 +62,7 @@ create policy "reservas_select" on public.reservas
 
 drop policy if exists "reservas_insert" on public.reservas;
 create policy "reservas_insert" on public.reservas
-  for insert with check (auth.uid() = user_id);
+  for insert with check (auth.uid() = user_id and status = 'pendente');
 
 drop policy if exists "reservas_update_admin" on public.reservas;
 create policy "reservas_update_admin" on public.reservas
@@ -77,6 +85,12 @@ create table if not exists public.pedidos_contacto (
   created_at timestamptz not null default now()
 );
 
+create sequence if not exists public.pedidos_ref_seq;
+grant usage on sequence public.pedidos_ref_seq to authenticated;
+alter table public.pedidos_contacto alter column ref set default
+  'CT-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.pedidos_ref_seq')::text, 4, '0');
+create unique index if not exists pedidos_contacto_ref_key on public.pedidos_contacto (ref);
+
 alter table public.pedidos_contacto enable row level security;
 
 drop policy if exists "pedidos_select" on public.pedidos_contacto;
@@ -85,7 +99,7 @@ create policy "pedidos_select" on public.pedidos_contacto
 
 drop policy if exists "pedidos_insert" on public.pedidos_contacto;
 create policy "pedidos_insert" on public.pedidos_contacto
-  for insert with check (auth.uid() = user_id);
+  for insert with check (auth.uid() = user_id and status = 'novo');
 
 drop policy if exists "pedidos_update_admin" on public.pedidos_contacto;
 create policy "pedidos_update_admin" on public.pedidos_contacto

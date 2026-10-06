@@ -136,13 +136,9 @@ export async function addReservation(
   input: ReservationInput,
 ): Promise<Reservation> {
   if (supabase) {
-    const { count } = await supabase
-      .from('reservas')
-      .select('id', { count: 'exact', head: true });
     const { data, error } = await supabase
       .from('reservas')
       .insert({
-        ref: newRef(count ?? 0),
         user_id: user.id,
         user_name: user.name,
         user_email: user.email,
@@ -267,13 +263,9 @@ export async function addContactRequest(
   input: ContactInput,
 ): Promise<ContactRequest> {
   if (supabase) {
-    const { count } = await supabase
-      .from('pedidos_contacto')
-      .select('id', { count: 'exact', head: true });
     const { data, error } = await supabase
       .from('pedidos_contacto')
       .insert({
-        ref: `CT-${new Date().getFullYear()}-${String((count ?? 0) + 1).padStart(4, '0')}`,
         reserva_ref: input.reservaRef,
         user_id: user.id,
         user_name: user.name,
