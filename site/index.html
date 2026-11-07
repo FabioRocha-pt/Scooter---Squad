@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Scooter &amp; Quad | Vive Cabo Verde sobre duas ou quatro rodas">
 <meta property="og:description" content="Excursões guiadas de quad em São Vicente e aluguer de scooters e quads nas duas ilhas.">
-<meta property="og:image" content="img/A1-hero-home.jpg">
+<meta property="og:image" content="https://www.scooter-quad.com/img/A1-hero-home.jpg">
 <meta property="og:locale" content="pt_PT">
 <meta name="theme-color" content="#FF6B1A">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
@@ -63,6 +63,10 @@
     </div>
     <div class="svc-grid" id="svcGrid"></div>
   </div>
+</section>
+
+<section class="section section-tight" id="promocoes" hidden>
+  <div class="container" id="promoBox"></div>
 </section>
 
 <section class="section fleet-band" id="frota">
@@ -276,6 +280,7 @@ function setIlha(k) {
 
   /* o aluguer de automóveis só existe em Santiago, por isso segue a ilha escolhida */
   renderCarros(document.getElementById('carrosBox'), k);
+  renderPromocoes(document.getElementById('promoBox'), k);
 }
 
 /* secções acrescentadas depois da reunião de setembro */

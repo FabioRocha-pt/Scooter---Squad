@@ -492,6 +492,9 @@ function cartoesFrota(lista) {
    por isso podem ser acrescentadas aos poucos sem partir o site.
    ============================================================ */
 const GAL = {};
+const GAL_SETA_E = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>';
+const GAL_SETA_D = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>';
+let GAL_DESLIZE = 0;   /* evita abrir o ecrã inteiro logo a seguir a um deslize */
 
 /* silhuetas para quando ainda não há fotografia */
 const SILHUETA = {
@@ -535,11 +538,11 @@ function galNavHTML(id) {
   const g = GAL[id];
   if (!g || g.imgs.length < 2) return '';
   return `
-    <button type="button" class="gal-b" onclick="galMove('${id}',-1)" aria-label="Anterior">‹</button>
+    <button type="button" class="gal-b prev" onclick="galMove('${id}',-1)" aria-label="Anterior">${GAL_SETA_E}</button>
     <div class="gal-dots">${g.imgs.map((_, k) =>
       `<button type="button" class="${k === g.i ? 'on' : ''}" onclick="galIr('${id}',${k})"
                aria-label="${k + 1}"></button>`).join('')}</div>
-    <button type="button" class="gal-b" onclick="galMove('${id}',1)" aria-label="Seguinte">›</button>`;
+    <button type="button" class="gal-b next" onclick="galMove('${id}',1)" aria-label="Seguinte">${GAL_SETA_D}</button>`;
 }
 
 function galPinta(id) {
@@ -581,6 +584,7 @@ function galFalhou(id, src) {
 const LB = { id: null, el: null };
 
 function galAbrir(id) {
+  if (Date.now() - GAL_DESLIZE < 450) return;
   const g = GAL[id];
   if (!g || !g.imgs.length) return;
   LB.id = id;
@@ -589,12 +593,12 @@ function galAbrir(id) {
     LB.el.className = 'lb';
     LB.el.innerHTML = `
       <button type="button" class="lb-x" onclick="galFechar()" aria-label="Fechar">×</button>
-      <button type="button" class="lb-b lb-prev" onclick="galMove(LB.id,-1)" aria-label="Anterior">‹</button>
+      <button type="button" class="lb-b lb-prev" onclick="galMove(LB.id,-1)" aria-label="Anterior">${GAL_SETA_E}</button>
       <figure class="lb-fig">
         <img id="lb-img" alt="">
         <figcaption><span id="lb-cap"></span> <b id="lb-n"></b></figcaption>
       </figure>
-      <button type="button" class="lb-b lb-next" onclick="galMove(LB.id,1)" aria-label="Seguinte">›</button>`;
+      <button type="button" class="lb-b lb-next" onclick="galMove(LB.id,1)" aria-label="Seguinte">${GAL_SETA_D}</button>`;
     LB.el.addEventListener('click', e => { if (e.target === LB.el) galFechar(); });
     document.body.appendChild(LB.el);
 
@@ -771,4 +775,60 @@ function bootstrap(pagina) {
 /* chamar no fim de cada página, depois de todo o conteúdo estar montado */
 function finalizar() {
   ativarAnimacoes();
+}
+
+
+/* Deslizar o dedo sobre a fotografia muda de imagem.
+   Não se aplica dentro da fila da frota, que já tem scroll horizontal:
+   aí os dois gestos chocavam. */
+(function () {
+  let x0 = null, id = null;
+  document.addEventListener('touchstart', e => {
+    const g = e.target.closest && e.target.closest('.gal');
+    if (!g || !g.id || g.closest('.fleet-scroll') || g.classList.contains('gal-vazia')) { x0 = null; return; }
+    id = g.id.slice(4); x0 = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) { galMove(id, dx < 0 ? 1 : -1); GAL_DESLIZE = Date.now(); }
+    x0 = null;
+  }, { passive: true });
+})();
+
+
+/* ---------- PROMOÇÕES DO MÊS ----------
+   Mostra só as da ilha escolhida e que ainda estejam dentro da validade.
+   Sem nenhuma ativa, a secção inteira fica escondida. */
+function promoTexto(campo) {
+  if (!campo) return '';
+  if (typeof campo === 'string') return campo;
+  return campo[LANG] || campo.pt || '';
+}
+function promoData(iso) {
+  const [a, m, d] = iso.split('-');
+  return `${d}.${m}.${a}`;
+}
+function renderPromocoes(el, ilha) {
+  const secao = el.closest('section') || el;
+  const hoje = new Date().toISOString().slice(0, 10);
+  const ativas = (typeof PROMOCOES !== 'undefined' ? PROMOCOES : []).filter(p =>
+    (!p.ilha || p.ilha === ilha) && (!p.validade || p.validade >= hoje));
+  if (!ativas.length) { secao.hidden = true; el.innerHTML = ''; return; }
+  secao.hidden = false;
+  const P = T.promo, nomeIlha = ILHAS[ilha] ? ILHAS[ilha].nome : '';
+  el.innerHTML = `
+    <div class="sec-head"><div><span class="kicker">${P.kicker}</span><h2>${P.t}</h2></div><p>${P.sub}</p></div>
+    <div class="promo-grid">
+      ${ativas.map(p => `
+        <article class="promo-card">
+          ${p.destaque ? `<span class="promo-tag">${p.destaque}</span>` : ''}
+          <h3>${promoTexto(p.titulo)}</h3>
+          <p>${promoTexto(p.texto)}</p>
+          <div class="promo-foot">
+            ${p.validade ? `<span class="promo-val">${P.ate} ${promoData(p.validade)}</span>` : '<span></span>'}
+            <a class="btn btn-o" href="pedido.html?tipo=${p.servico && /exc|volta|costa/i.test(p.servico) ? 'excursao' : 'reserva'}&amp;ilha=${encodeURIComponent(nomeIlha)}${p.servico ? '&amp;servico=' + encodeURIComponent(p.servico) : ''}">${P.cta}</a>
+          </div>
+        </article>`).join('')}
+    </div>`;
 }

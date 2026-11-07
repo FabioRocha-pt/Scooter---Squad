@@ -67,6 +67,7 @@ pt: {
     nota:'Quilómetros ilimitados, sem limite diário nem custo por quilómetro adicional.',
     suplemento:'Suplemento sem limite de quilómetros, por dia'
   },
+  promo: { kicker:'Promoções', t:'Este mês', sub:'Condições especiais por tempo limitado.', ate:'Válido até', cta:'Aproveitar' },
   avaliacoes: {
     kicker:'Avaliações', t:'O que dizem quem já andou connosco',
     sub:'Avaliações reais deixadas por clientes no Google.',
@@ -75,13 +76,13 @@ pt: {
   usadosF: { ano:'Ano', km:'Quilómetros', matricula:'Matrícula', cor:'Cor', galeria:'Fotografias do próprio veículo' },
   seguroDestaque: {
     t:'Segurança em primeiro lugar',
-    p:'Por poucos euros por dia, o seguro adicional cobre os danos no veículo até ao limite da caução. Sem ele, um arranhão numa parede pode custar-te a caução inteira. Vale sempre a pena.',
+    p:'Por poucos euros por dia, o seguro adicional cobre os danos no veículo até ao montante da caução. Sem ele, o cliente responde pelo valor total dos danos, e um arranhão numa parede pode custar a caução inteira, ou mais. Vale sempre a pena.',
     cta:'Falar sobre o seguro'
   },
   info: {
-    docT:'Documentos', docP:'Bilhete de identidade ou passaporte e carta de condução válida. A Taro T9, de 124 cc, exige categoria A1. As scooters acima de 125 cc exigem categoria A. Os quads exigem categoria B.',
-    cauT:'Caução', cauP:'Paga em dinheiro ou cartão e devolvida na entrega do veículo em boas condições. Não existe franquia: a responsabilidade vai até ao limite da caução.',
-    capT:'Capacetes e seguro', capP:'Capacete obrigatório para condutor e passageiro, ambos incluídos. Seguro de responsabilidade civil que cobre condutor e passageiro.',
+    docT:'Documentos', docP:'Passaporte e carta de condução válida. A Taro T9, de 124 cc, exige categoria A1. As scooters acima de 125 cc exigem categoria A. Os quads exigem categoria B.',
+    cauT:'Caução', cauP:'A caução pode ser paga em dinheiro ou cartão e é devolvida após a entrega do veículo em boas condições. Em caso de danos, o cliente é responsável pelo valor total dos prejuízos causados, mesmo que este seja superior ao montante da caução. Caso a caução não seja suficiente para cobrir os danos, o cliente deverá pagar a diferença.',
+    capT:'Capacetes e seguro', capP:'Capacete para condutor e passageiro, incluído. Todos os nossos veículos dispõem de seguro de Responsabilidade Civil Obrigatória e cobertura complementar, garantindo proteção em caso de acidentes. O seguro inclui a cobertura de danos materiais e corporais causados a terceiros, bem como proteção para o condutor e passageiro. Todas as coberturas estão sujeitas às condições, limites e exclusões previstos na respetiva apólice de seguro.',
     kmT:'Limite de km', kmP:'100 km por dia no aluguer base de scooter. Acima disso paga-se 0,30 € por km, ou escolhes a tarifa sem limite.',
     entT:'Entrega no hotel ou aeroporto', entP:'Levamos e recolhemos o veículo no teu hotel ou no aeroporto, por 12 € por trajeto (20 € no aeroporto). A equipa aguarda até 20 minutos após a hora combinada.',
     canT:'Alterações e cancelamento', canP:'Alterações e cancelamentos até 24 horas antes, com reembolso total. Depois disso não são permitidos.'
@@ -205,19 +206,19 @@ pt: {
     missaoT:'A nossa missão',
     missao:'Proporcionar a quem visita Cabo Verde uma experiência segura e inesquecível, com serviços de alto nível e excursões que valorizam a beleza natural e cultural das ilhas. Operamos segundo os mais elevados padrões de sustentabilidade e promovemos um turismo responsável, que respeita o ambiente local.',
     fecho:'Escolher a Scooter & Quad é confiar em profissionais que colocam paixão, competência e foco na qualidade em tudo o que fazem.',
-    stats:[{n:'2022',p:'Ano de fundação, com mais de 20 anos de experiência no setor'},{n:'2',p:'Ilhas: São Vicente e Santiago'},{n:'4',p:'Idiomas falados pela nossa equipa'},{n:'100%',p:'Frota verificada diariamente na nossa oficina'}]
+    stats:[{n:'2022',p:'Ano de fundação. Os sócios têm, todavia, mais de 20 anos de experiência no setor'},{n:'2',p:'Ilhas: São Vicente e Santiago'},{n:'4',p:'Idiomas falados pela nossa equipa'},{n:'100%',p:'Frota verificada diariamente na nossa oficina'}]
   },
   faq: [
     ['O que está incluído no aluguer?','Capacete para condutor e passageiro, seguro obrigatório de responsabilidade civil, que cobre também o condutor e o passageiro, e quilometragem até 100 km por dia nas scooters.'],
-    ['O que preciso para alugar uma scooter ou quad?','Bilhete de identidade ou passaporte, dinheiro ou cartão de crédito para a caução e carta de condução válida que cumpra os requisitos do Código da Estrada cabo-verdiano.'],
+    ['O que preciso para alugar uma scooter ou quad?','Passaporte, dinheiro ou cartão para a caução e carta de condução válida. A Taro T9, de 124 cc, exige categoria A1; as scooters acima de 125 cc exigem categoria A; os quads exigem categoria B.'],
     ['Que categoria de carta é necessária?','Até 124cc: categoria A1. Scooters acima de 124cc: categoria A. Quads: categoria B.'],
-    ['Quanto é a caução?','Depende do modelo: 150 € na T9 125cc, 200 € na T11 300cc, 250 € na T12 400cc e 250 € no quad. É paga em dinheiro ou com cartão e devolvida na entrega do veículo em boas condições. Não existe franquia: a responsabilidade do cliente vai até ao limite da caução.'],
+    ['Quanto é a caução?','Depende do modelo: 150 € na T9 124 cc, 200 € na T11 300 cc, 250 € na T12 400 cc e 250 € no quad. Pode ser paga em dinheiro ou cartão e é devolvida após a entrega do veículo em boas condições. Em caso de danos, o cliente é responsável pelo valor total dos prejuízos, mesmo que seja superior ao montante da caução, e paga a diferença.'],
     ['Que formas de pagamento aceitam?','Dinheiro em escudos (CVE) ou euros e cartão VISA.'],
     ['Há limite de quilómetros?','No aluguer base de scooter o limite é de 100 km por dia. Acima disso aplica-se 33 CVE (0,30 €) por quilómetro adicional. Existe também uma tarifa de 1 dia sem limite de quilómetros: 42 € na T9, 48 € na T11 e 53 € na T12.'],
     ['Entregam o veículo no hotel ou no aeroporto?','Sim. A entrega e recolha custa 12 € por trajeto, ou 20 € por trajeto no aeroporto. A equipa aguarda a chegada do cliente cerca de 20 minutos após a hora combinada.'],
     ['Qual é o horário de levantamento e devolução?','O levantamento e a devolução são feitos entre as 09h e as 18h. Fora desse horário é possível mediante marcação prévia.'],
-    ['O que cobre o seguro?','O seguro cobre danos a terceiros e a responsabilidade sobre condutor e passageiro. Em caso de dano ou furto do veículo, a responsabilidade do cliente vai até ao limite da caução, conforme o contrato. Os acessórios, como capacetes e cadeados, não estão cobertos.'],
-    ['É possível contratar seguro adicional?','Sim. O seguro extra custa 7 € na T9, 9 € na T11 e 12 € na T12, e cobre danos até ao limite da caução, mas não cobre furto. As condições específicas constam do contrato.'],
+    ['O que cobre o seguro?','Todos os nossos veículos dispõem de seguro de Responsabilidade Civil Obrigatória e cobertura complementar, garantindo proteção em caso de acidentes. O seguro inclui a cobertura de danos materiais e corporais causados a terceiros, bem como proteção para o condutor e passageiro. Todas as coberturas estão sujeitas às condições, limites e exclusões previstos na respetiva apólice de seguro. Nos danos ao próprio veículo alugado, o cliente é responsável pelo valor total, mesmo acima da caução. Os acessórios, como capacetes e cadeados, não estão cobertos.'],
+    ['É possível contratar seguro adicional?','Sim, e recomendamos. O seguro extra custa 7 € por dia na T9, 9 € por dia na T11 e 12 € por dia na T12. Cobre os danos no veículo até ao montante da caução, mas não cobre furto. Acima desse montante, a diferença fica a cargo do cliente. As condições específicas constam do contrato.'],
     ['Posso alterar ou cancelar a reserva?','Sim, até 24 horas antes da data e hora de início, através de pedido para info@scooter-quad.com. Cancelamentos com mais de 24 horas de antecedência têm reembolso total. Dentro das 24 horas não são permitidas alterações nem cancelamentos com reembolso.'],
     ['Quais são as durações e preços das excursões?','As excursões de quad existem apenas em São Vicente: 4 horas por 100 € (duplo) ou 85 € (individual) e 2 horas por 85 € (duplo) ou 70 € (individual). Grupos de 2 a 12 participantes, com guias em português, inglês, francês e espanhol.'],
     ['Que requisitos existem para participar numa excursão?','O condutor do quad deve ter mais de 21 anos e carta de condução de categoria B. A idade mínima do passageiro é 7 anos. A atividade não é recomendada a pessoas com mobilidade reduzida.'],
@@ -250,8 +251,8 @@ pt: {
     termos:[
       ['Âmbito','Estas condições aplicam-se aos pedidos feitos através do site. As condições completas do aluguer constam do contrato assinado no momento do levantamento do veículo.'],
       ['Reservas','Os pedidos feitos no site não são reservas confirmadas. A reserva só fica confirmada após confirmação da nossa equipa e pagamento do depósito de 50% do valor.'],
-      ['Documentos e requisitos','É necessário bilhete de identidade ou passaporte e carta de condução válida e adequada à categoria do veículo: A1 até 124cc, A acima de 124cc e B para quads. Nas excursões, o condutor deve ter mais de 21 anos.'],
-      ['Caução e responsabilidade','É exigida caução no momento do levantamento, devolvida na entrega do veículo em boas condições. Não existe franquia: a responsabilidade do cliente por danos ou furto vai até ao limite da caução, nos termos do contrato.'],
+      ['Documentos e requisitos','É necessário passaporte e carta de condução válida e adequada à categoria do veículo: a Taro T9, de 124 cc, exige categoria A1; as scooters acima de 125 cc exigem categoria A; os quads exigem categoria B. Nas excursões, o condutor deve ter mais de 21 anos.'],
+      ['Caução e responsabilidade','É exigida caução no momento do levantamento, paga em dinheiro ou cartão e devolvida após a entrega do veículo em boas condições. Em caso de danos, o cliente é responsável pelo valor total dos prejuízos causados, mesmo que seja superior ao montante da caução, devendo pagar a diferença, nos termos do contrato.'],
       ['Alterações e cancelamentos','Alterações e cancelamentos são possíveis até 24 horas antes do início, com reembolso total. Dentro das 24 horas não são permitidos e não há lugar a reembolso. A devolução antecipada não dá direito a reembolso.'],
       ['Utilização do veículo','O uso de capacete é obrigatório para condutor e passageiro. O cliente compromete-se a respeitar o Código da Estrada em vigor em Cabo Verde e a devolver o veículo com o combustível ao mesmo nível do levantamento.'],
       ['Preços','Os preços apresentados incluem IVA e podem ser atualizados. Aplica-se o preço confirmado no momento da reserva.']
@@ -310,6 +311,7 @@ en: {
     nota:'Unlimited mileage, with no daily cap and no charge per extra kilometre.',
     suplemento:'Unlimited mileage supplement, per day'
   },
+  promo: { kicker:'Offers', t:'This month', sub:'Special terms for a limited time.', ate:'Valid until', cta:'Book this offer' },
   avaliacoes: {
     kicker:'Reviews', t:'What people who rode with us say',
     sub:'Real reviews left by customers on Google.',
@@ -318,13 +320,13 @@ en: {
   usadosF: { ano:'Year', km:'Mileage', matricula:'Registration', cor:'Colour', galeria:'Photos of this actual vehicle' },
   seguroDestaque: {
     t:'Safety first',
-    p:'For a few euros a day, the extra insurance covers damage to the vehicle up to the deposit amount. Without it, one scrape against a wall can cost you the whole deposit. It is always worth it.',
+    p:'For a few euros a day, the extra insurance covers damage to the vehicle up to the deposit amount. Without it, you are liable for the full cost of any damage, and one scrape against a wall can cost the whole deposit, or more. It is always worth it.',
     cta:'Ask about the insurance'
   },
   info: {
-    docT:'Documents', docP:'ID card or passport and a valid driving licence. The 124 cc Taro T9 requires category A1. Scooters above 125 cc require category A. Quads require category B.',
-    cauT:'Deposit', cauP:'Paid in cash or by card and returned when the vehicle comes back in good condition. There is no excess: liability is capped at the deposit amount.',
-    capT:'Helmets and insurance', capP:'Helmets are mandatory for rider and passenger and both are included. Third-party liability insurance also covers rider and passenger.',
+    docT:'Documents', docP:'Passport and a valid driving licence. The 124 cc Taro T9 requires category A1. Scooters above 125 cc require category A. Quads require category B.',
+    cauT:'Deposit', cauP:'The deposit can be paid in cash or by card and is returned once the vehicle is handed back in good condition. In the event of damage, the customer is liable for the full cost of the damage caused, even if it exceeds the deposit. If the deposit does not cover the damage, the customer must pay the difference.',
+    capT:'Helmets and insurance', capP:'Helmet for rider and passenger included. All our vehicles carry compulsory third-party liability insurance plus complementary cover, providing protection in case of accidents. The insurance covers material damage and bodily injury caused to third parties, as well as protection for the rider and passenger. All cover is subject to the conditions, limits and exclusions set out in the insurance policy.',
     kmT:'Mileage limit', kmP:'100 km per day on the basic scooter rate. Above that, 0.30 € per km, or choose the unlimited mileage rate.',
     entT:'Hotel or airport delivery', entP:'We deliver and collect the vehicle at your hotel or at the airport for 12 € each way (20 € at the airport). Our team waits up to 20 minutes after the agreed time.',
     canT:'Changes and cancellation', canP:'Changes and cancellations up to 24 hours before, with a full refund. After that they are not allowed.'
@@ -441,19 +443,19 @@ en: {
     missaoT:'Our mission',
     missao:'To give visitors to Cape Verde a safe and unforgettable experience, with high-quality services and excursions that showcase the natural and cultural beauty of the islands. We work to the highest standards of sustainability and promote responsible tourism that respects the local environment.',
     fecho:'Choosing Scooter & Quad means trusting professionals who bring passion, expertise and a focus on quality to everything they do.',
-    stats:[{n:'2022',p:'Founded, with over 20 years of industry experience'},{n:'2',p:'Islands: São Vicente and Santiago'},{n:'4',p:'Languages spoken by our team'},{n:'100%',p:'Fleet checked daily in our workshop'}]
+    stats:[{n:'2022',p:'Year founded. The partners, however, have over 20 years of experience in the sector'},{n:'2',p:'Islands: São Vicente and Santiago'},{n:'4',p:'Languages spoken by our team'},{n:'100%',p:'Fleet checked daily in our workshop'}]
   },
   faq: [
     ['What is included in the rental?','A helmet for rider and passenger, compulsory third-party liability insurance, which also covers rider and passenger, and up to 100 km per day on scooters.'],
-    ['What do I need to rent a scooter or quad?','ID card or passport, cash or a credit card for the deposit, and a valid driving licence meeting the requirements of the Cape Verdean Highway Code.'],
+    ['What do I need to rent a scooter or quad?','A passport, cash or a card for the deposit, and a valid driving licence. The 124 cc Taro T9 requires category A1; scooters above 125 cc require category A; quads require category B.'],
     ['Which licence category do I need?','Up to 124cc: category A1. Scooters above 124cc: category A. Quads: category B.'],
-    ['How much is the deposit?','It depends on the model: 150 € for the T9 125cc, 200 € for the T11 300cc, 250 € for the T12 400cc and 250 € for the quad. It is paid in cash or by card and returned when the vehicle comes back in good condition. There is no excess: the customer\'s liability is capped at the deposit amount.'],
+    ['How much is the deposit?','It depends on the model: 150 € for the T9 124 cc, 200 € for the T11 300 cc, 250 € for the T12 400 cc and 250 € for the quad. It can be paid in cash or by card and is returned once the vehicle is handed back in good condition. In the event of damage, the customer is liable for the full cost, even if it exceeds the deposit, and pays the difference.'],
     ['Which payment methods do you accept?','Cash in escudos (CVE) or euros, and VISA.'],
     ['Is there a mileage limit?','The basic scooter rate includes 100 km per day. Above that, 33 CVE (0.30 €) per additional kilometre applies. There is also a one-day unlimited mileage rate: 42 € for the T9, 48 € for the T11 and 53 € for the T12.'],
     ['Do you deliver to the hotel or the airport?','Yes. Delivery and collection costs 12 € each way, or 20 € each way at the airport. Our team waits about 20 minutes after the agreed time.'],
     ['What are the pick-up and return hours?','Pick-up and return take place between 09:00 and 18:00. Outside those hours it is possible by prior arrangement.'],
-    ['What does the insurance cover?','The insurance covers third-party damage and liability for rider and passenger. In case of damage or theft of the vehicle, the customer\'s liability is capped at the deposit amount, as set out in the contract. Accessories such as helmets and locks are not covered.'],
-    ['Can I take out extra insurance?','Yes. Extra insurance costs 7 € for the T9, 9 € for the T11 and 12 € for the T12, and covers damage up to the deposit amount, but not theft. The specific conditions are set out in the contract.'],
+    ['What does the insurance cover?','All our vehicles carry compulsory third-party liability insurance plus complementary cover, providing protection in case of accidents. The insurance covers material damage and bodily injury caused to third parties, as well as protection for the rider and passenger. All cover is subject to the conditions, limits and exclusions set out in the insurance policy. For damage to the rented vehicle itself, the customer is liable for the full cost, even above the deposit. Accessories such as helmets and locks are not covered.'],
+    ['Can I take out extra insurance?','Yes, and we recommend it. Extra insurance costs 7 € per day for the T9, 9 € per day for the T11 and 12 € per day for the T12. It covers damage to the vehicle up to the deposit amount, but not theft. Above that amount, the difference is paid by the customer. The specific conditions are set out in the contract.'],
     ['Can I change or cancel my booking?','Yes, up to 24 hours before the start date and time, by writing to info@scooter-quad.com. Cancellations more than 24 hours in advance are fully refunded. Within 24 hours, changes and refunded cancellations are not possible.'],
     ['How long are the excursions and how much do they cost?','Quad excursions run only in São Vicente: 4 hours for 100 € (two riders) or 85 € (single), and 2 hours for 85 € (two riders) or 70 € (single). Groups of 2 to 12, with guides in Portuguese, English, French and Spanish.'],
     ['What are the requirements to join an excursion?','The quad rider must be over 21 and hold a category B licence. The minimum passenger age is 7. The activity is not recommended for people with reduced mobility.'],
@@ -483,8 +485,8 @@ en: {
     termos:[
       ['Scope','These conditions apply to requests made through this website. The full rental conditions are set out in the contract signed when the vehicle is collected.'],
       ['Bookings','Requests made on the site are not confirmed bookings. A booking is confirmed only after our team confirms it and the 50% deposit is paid.'],
-      ['Documents and requirements','An ID card or passport and a valid driving licence for the vehicle category are required: A1 up to 124cc, A above 124cc and B for quads. On excursions, the rider must be over 21.'],
-      ['Deposit and liability','A security deposit is required at collection and returned when the vehicle comes back in good condition. There is no excess: the customer\'s liability for damage or theft is capped at the deposit amount, as set out in the contract.'],
+      ['Documents and requirements','A passport and a valid driving licence for the vehicle category are required: the 124 cc Taro T9 requires category A1; scooters above 125 cc require category A; quads require category B. For excursions, the driver must be over 21.'],
+      ['Deposit and liability','A deposit is required at collection, paid in cash or by card, and returned once the vehicle is handed back in good condition. In the event of damage, the customer is liable for the full cost of the damage caused, even if it exceeds the deposit, and must pay the difference, as set out in the contract.'],
       ['Changes and cancellations','Changes and cancellations are possible up to 24 hours before the start, with a full refund. Within 24 hours they are not allowed and no refund is due. Early return does not give rise to a refund.'],
       ['Use of the vehicle','Helmets are mandatory for rider and passenger. The customer undertakes to respect the Highway Code in force in Cape Verde and to return the vehicle with fuel at the same level as at collection.'],
       ['Prices','Prices shown include VAT and may be updated. The price confirmed at the time of booking applies.']
@@ -543,6 +545,7 @@ it: {
     nota:'Chilometri illimitati, senza limite giornaliero né costo per chilometro aggiuntivo.',
     suplemento:'Supplemento senza limite di chilometri, al giorno'
   },
+  promo: { kicker:'Offerte', t:'Questo mese', sub:'Condizioni speciali per un periodo limitato.', ate:'Valida fino al', cta:'Approfitta' },
   avaliacoes: {
     kicker:'Recensioni', t:'Cosa dice chi è già stato con noi',
     sub:'Recensioni reali lasciate dai clienti su Google.',
@@ -551,13 +554,13 @@ it: {
   usadosF: { ano:'Anno', km:'Chilometri', matricula:'Targa', cor:'Colore', galeria:'Foto del veicolo in vendita' },
   seguroDestaque: {
     t:'La sicurezza prima di tutto',
-    p:'Per pochi euro al giorno, l’assicurazione extra copre i danni al veicolo fino all’importo della cauzione. Senza, una graffiata contro un muro può costarti l’intera cauzione. Ne vale sempre la pena.',
+    p:'Per pochi euro al giorno, l’assicurazione extra copre i danni al veicolo fino all’importo della cauzione. Senza, rispondi dell’importo totale dei danni, e una graffiata contro un muro può costare l’intera cauzione, o di più. Ne vale sempre la pena.',
     cta:'Chiedi informazioni sull’assicurazione'
   },
   info: {
-    docT:'Documenti', docP:'Carta d’identità o passaporto e patente di guida valida. La Taro T9, da 124 cc, richiede la categoria A1. Gli scooter sopra i 125 cc richiedono la categoria A. I quad richiedono la categoria B.',
-    cauT:'Cauzione', cauP:'Pagata in contanti o con carta e restituita alla riconsegna del veicolo in buone condizioni. Non esiste franchigia: la responsabilità arriva fino all’importo della cauzione.',
-    capT:'Caschi e assicurazione', capP:'Casco obbligatorio per conducente e passeggero, entrambi inclusi. Assicurazione di responsabilità civile che copre anche conducente e passeggero.',
+    docT:'Documenti', docP:'Passaporto e patente di guida valida. La Taro T9, da 124 cc, richiede la categoria A1. Gli scooter sopra i 125 cc richiedono la categoria A. I quad richiedono la categoria B.',
+    cauT:'Cauzione', cauP:'La cauzione può essere pagata in contanti o con carta e viene restituita dopo la riconsegna del veicolo in buone condizioni. In caso di danni, il cliente è responsabile dell’importo totale dei danni causati, anche se superiore alla cauzione. Se la cauzione non è sufficiente a coprire i danni, il cliente deve pagare la differenza.',
+    capT:'Caschi e assicurazione', capP:'Casco per conducente e passeggero incluso. Tutti i nostri veicoli dispongono di assicurazione obbligatoria di Responsabilità Civile e di una copertura complementare, a garanzia di protezione in caso di incidente. L’assicurazione copre i danni materiali e fisici causati a terzi, oltre alla protezione del conducente e del passeggero. Tutte le coperture sono soggette alle condizioni, ai limiti e alle esclusioni previsti dalla relativa polizza.',
     kmT:'Limite di km', kmP:'100 km al giorno con la tariffa base per scooter. Oltre, 0,30 € per km, oppure scegli la tariffa senza limiti.',
     entT:'Consegna in hotel o aeroporto', entP:'Consegniamo e ritiriamo il veicolo in hotel o in aeroporto per 12 € a tratta (20 € in aeroporto). Il team attende fino a 20 minuti dopo l’orario concordato.',
     canT:'Modifiche e cancellazione', canP:'Modifiche e cancellazioni fino a 24 ore prima, con rimborso totale. Dopo non sono ammesse.'
@@ -674,19 +677,19 @@ it: {
     missaoT:'La nostra missione',
     missao:'Offrire a chi visita Capo Verde un’esperienza sicura e indimenticabile, con servizi di alto livello ed escursioni che valorizzano la bellezza naturale e culturale delle isole. Operiamo secondo i più alti standard di sostenibilità e promuoviamo un turismo responsabile, rispettoso dell’ambiente locale.',
     fecho:'Scegliere Scooter & Quad significa affidarsi a professionisti che mettono passione, competenza e attenzione alla qualità in tutto ciò che fanno.',
-    stats:[{n:'2022',p:'Anno di fondazione, con oltre 20 anni di esperienza nel settore'},{n:'2',p:'Isole: São Vicente e Santiago'},{n:'4',p:'Lingue parlate dal nostro team'},{n:'100%',p:'Flotta controllata ogni giorno in officina'}]
+    stats:[{n:'2022',p:'Anno di fondazione. I soci hanno comunque oltre 20 anni di esperienza nel settore'},{n:'2',p:'Isole: São Vicente e Santiago'},{n:'4',p:'Lingue parlate dal nostro team'},{n:'100%',p:'Flotta controllata ogni giorno in officina'}]
   },
   faq: [
     ['Cosa è incluso nel noleggio?','Casco per conducente e passeggero, assicurazione obbligatoria di responsabilità civile, che copre anche conducente e passeggero, e fino a 100 km al giorno sugli scooter.'],
-    ['Cosa serve per noleggiare uno scooter o un quad?','Carta d’identità o passaporto, contanti o carta di credito per la cauzione e una patente valida conforme al Codice della Strada capoverdiano.'],
+    ['Cosa serve per noleggiare uno scooter o un quad?','Passaporto, contanti o carta per la cauzione e patente di guida valida. La Taro T9, da 124 cc, richiede la categoria A1; gli scooter sopra i 125 cc la categoria A; i quad la categoria B.'],
     ['Quale categoria di patente serve?','Fino a 124cc: categoria A1. Scooter oltre 124cc: categoria A. Quad: categoria B.'],
-    ['Quanto è la cauzione?','Dipende dal modello: 150 € per la T9 125cc, 200 € per la T11 300cc, 250 € per la T12 400cc e 250 € per il quad. Si paga in contanti o con carta e viene restituita alla riconsegna del veicolo in buone condizioni. Non esiste franchigia: la responsabilità del cliente arriva fino all’importo della cauzione.'],
+    ['Quanto è la cauzione?','Dipende dal modello: 150 € per la T9 124 cc, 200 € per la T11 300 cc, 250 € per la T12 400 cc e 250 € per il quad. Si può pagare in contanti o con carta e viene restituita dopo la riconsegna del veicolo in buone condizioni. In caso di danni, il cliente è responsabile dell’importo totale, anche se superiore alla cauzione, e paga la differenza.'],
     ['Quali metodi di pagamento accettate?','Contanti in escudos (CVE) o euro e carta VISA.'],
     ['C’è un limite di chilometri?','La tariffa base per scooter include 100 km al giorno. Oltre, si applicano 33 CVE (0,30 €) per chilometro aggiuntivo. Esiste anche una tariffa di 1 giorno senza limiti: 42 € per la T9, 48 € per la T11 e 53 € per la T12.'],
     ['Consegnate in hotel o in aeroporto?','Sì. Consegna e ritiro costano 12 € a tratta, o 20 € a tratta in aeroporto. Il team attende circa 20 minuti dopo l’orario concordato.'],
     ['Qual è l’orario di ritiro e riconsegna?','Ritiro e riconsegna avvengono tra le 09:00 e le 18:00. Fuori orario è possibile su appuntamento.'],
-    ['Cosa copre l’assicurazione?','L’assicurazione copre i danni a terzi e la responsabilità su conducente e passeggero. In caso di danno o furto del veicolo, la responsabilità del cliente arriva fino all’importo della cauzione, secondo contratto. Gli accessori, come caschi e lucchetti, non sono coperti.'],
-    ['È possibile aggiungere un’assicurazione extra?','Sì. L’assicurazione extra costa 7 € per la T9, 9 € per la T11 e 12 € per la T12, e copre i danni fino all’importo della cauzione, ma non il furto. Le condizioni specifiche sono nel contratto.'],
+    ['Cosa copre l’assicurazione?','Tutti i nostri veicoli dispongono di assicurazione obbligatoria di Responsabilità Civile e di una copertura complementare, a garanzia di protezione in caso di incidente. L’assicurazione copre i danni materiali e fisici causati a terzi, oltre alla protezione del conducente e del passeggero. Tutte le coperture sono soggette alle condizioni, ai limiti e alle esclusioni previsti dalla relativa polizza. Per i danni al veicolo noleggiato, il cliente è responsabile dell’importo totale, anche oltre la cauzione. Gli accessori, come caschi e lucchetti, non sono coperti.'],
+    ['È possibile aggiungere un’assicurazione extra?','Sì, e lo consigliamo. L’assicurazione extra costa 7 € al giorno per la T9, 9 € al giorno per la T11 e 12 € al giorno per la T12. Copre i danni al veicolo fino all’importo della cauzione, ma non il furto. Oltre tale importo, la differenza è a carico del cliente. Le condizioni specifiche sono nel contratto.'],
     ['Posso modificare o cancellare la prenotazione?','Sì, fino a 24 ore prima della data e ora di inizio, scrivendo a info@scooter-quad.com. Le cancellazioni con più di 24 ore di anticipo sono rimborsate al 100%. Entro le 24 ore non sono ammesse modifiche né cancellazioni con rimborso.'],
     ['Quali sono durate e prezzi delle escursioni?','Le escursioni in quad si svolgono solo a São Vicente: 4 ore a 100 € (in due) o 85 € (singolo) e 2 ore a 85 € (in due) o 70 € (singolo). Gruppi da 2 a 12 partecipanti, con guide in portoghese, inglese, francese e spagnolo.'],
     ['Quali requisiti servono per l’escursione?','Il conducente del quad deve avere più di 21 anni e patente di categoria B. L’età minima del passeggero è 7 anni. L’attività non è consigliata a persone con mobilità ridotta.'],
@@ -716,8 +719,8 @@ it: {
     termos:[
       ['Ambito','Queste condizioni si applicano alle richieste effettuate tramite il sito. Le condizioni complete del noleggio sono nel contratto firmato al momento del ritiro del veicolo.'],
       ['Prenotazioni','Le richieste inviate dal sito non sono prenotazioni confermate. La prenotazione è confermata solo dopo la conferma del nostro team e il pagamento dell’acconto del 50%.'],
-      ['Documenti e requisiti','Servono carta d’identità o passaporto e patente valida per la categoria del veicolo: A1 fino a 124cc, A oltre 124cc e B per i quad. Nelle escursioni il conducente deve avere più di 21 anni.'],
-      ['Cauzione e responsabilità','Al ritiro è richiesta una cauzione, restituita alla riconsegna del veicolo in buone condizioni. Non esiste franchigia: la responsabilità del cliente per danni o furto arriva fino all’importo della cauzione, secondo contratto.'],
+      ['Documenti e requisiti','Servono passaporto e patente valida per la categoria del veicolo: la Taro T9, da 124 cc, richiede la categoria A1; gli scooter sopra i 125 cc la categoria A; i quad la categoria B. Nelle escursioni il conducente deve avere più di 21 anni.'],
+      ['Cauzione e responsabilità','Al ritiro è richiesta una cauzione, pagabile in contanti o con carta, restituita dopo la riconsegna del veicolo in buone condizioni. In caso di danni, il cliente è responsabile dell’importo totale dei danni causati, anche se superiore alla cauzione, e deve pagare la differenza, secondo contratto.'],
       ['Modifiche e cancellazioni','Modifiche e cancellazioni sono possibili fino a 24 ore prima dell’inizio, con rimborso totale. Entro le 24 ore non sono ammesse e non spetta alcun rimborso. La riconsegna anticipata non dà diritto a rimborso.'],
       ['Uso del veicolo','Il casco è obbligatorio per conducente e passeggero. Il cliente si impegna a rispettare il Codice della Strada in vigore a Capo Verde e a riconsegnare il veicolo con il carburante allo stesso livello del ritiro.'],
       ['Prezzi','I prezzi indicati includono l’IVA e possono essere aggiornati. Si applica il prezzo confermato al momento della prenotazione.']
@@ -776,6 +779,7 @@ fr: {
     nota:'Kilométrage illimité, sans plafond journalier ni coût par kilomètre supplémentaire.',
     suplemento:'Supplément sans limite de kilomètres, par jour'
   },
+  promo: { kicker:'Offres', t:'Ce mois-ci', sub:'Conditions spéciales pour une durée limitée.', ate:'Valable jusqu’au', cta:'En profiter' },
   avaliacoes: {
     kicker:'Avis', t:'Ce que disent ceux qui sont venus',
     sub:'Avis réels laissés par des clients sur Google.',
@@ -784,13 +788,13 @@ fr: {
   usadosF: { ano:'Année', km:'Kilométrage', matricula:'Immatriculation', cor:'Couleur', galeria:'Photos du véhicule mis en vente' },
   seguroDestaque: {
     t:'La sécurité d’abord',
-    p:'Pour quelques euros par jour, l’assurance complémentaire couvre les dommages au véhicule jusqu’au montant de la caution. Sans elle, une éraflure contre un mur peut vous coûter la caution entière. Cela en vaut toujours la peine.',
+    p:'Pour quelques euros par jour, l’assurance complémentaire couvre les dommages au véhicule jusqu’au montant de la caution. Sans elle, vous êtes responsable du montant total des dommages, et une éraflure contre un mur peut coûter la caution entière, voire plus. Cela en vaut toujours la peine.',
     cta:'Poser une question sur l’assurance'
   },
   info: {
-    docT:'Documents', docP:'Carte d’identité ou passeport et permis de conduire valide. La Taro T9, de 124 cc, exige la catégorie A1. Les scooters de plus de 125 cc exigent la catégorie A. Les quads exigent la catégorie B.',
-    cauT:'Caution', cauP:'Payée en espèces ou par carte et restituée au retour du véhicule en bon état. Il n’y a pas de franchise : la responsabilité est plafonnée au montant de la caution.',
-    capT:'Casques et assurance', capP:'Le casque est obligatoire pour le conducteur et le passager, les deux sont inclus. L’assurance responsabilité civile couvre aussi le conducteur et le passager.',
+    docT:'Documents', docP:'Passeport et permis de conduire valide. La Taro T9, de 124 cc, exige la catégorie A1. Les scooters de plus de 125 cc exigent la catégorie A. Les quads exigent la catégorie B.',
+    cauT:'Caution', cauP:'La caution peut être payée en espèces ou par carte et est restituée après le retour du véhicule en bon état. En cas de dommages, le client est responsable du montant total des préjudices causés, même s’il dépasse le montant de la caution. Si la caution ne suffit pas à couvrir les dommages, le client doit payer la différence.',
+    capT:'Casques et assurance', capP:'Casque pour le conducteur et le passager inclus. Tous nos véhicules disposent d’une assurance Responsabilité Civile obligatoire et d’une couverture complémentaire, garantissant une protection en cas d’accident. L’assurance couvre les dommages matériels et corporels causés aux tiers, ainsi que la protection du conducteur et du passager. Toutes les couvertures sont soumises aux conditions, limites et exclusions prévues par la police d’assurance.',
     kmT:'Limite de km', kmP:'100 km par jour avec le tarif de base scooter. Au-delà, 0,30 € par km, ou choisissez le tarif sans limite.',
     entT:'Livraison à l’hôtel ou à l’aéroport', entP:'Nous livrons et récupérons le véhicule à votre hôtel ou à l’aéroport pour 12 € par trajet (20 € à l’aéroport). L’équipe attend jusqu’à 20 minutes après l’heure convenue.',
     canT:'Modifications et annulation', canP:'Modifications et annulations jusqu’à 24 heures avant, avec remboursement intégral. Passé ce délai, elles ne sont pas possibles.'
@@ -907,19 +911,19 @@ fr: {
     missaoT:'Notre mission',
     missao:'Offrir à ceux qui visitent le Cap-Vert une expérience sûre et inoubliable, avec des services de haut niveau et des excursions qui mettent en valeur la beauté naturelle et culturelle des îles. Nous travaillons selon les plus hauts standards de durabilité et promouvons un tourisme responsable, respectueux de l’environnement local.',
     fecho:'Choisir Scooter & Quad, c’est faire confiance à des professionnels qui mettent passion, compétence et exigence de qualité dans tout ce qu’ils font.',
-    stats:[{n:'2022',p:'Année de création, avec plus de 20 ans d’expérience dans le secteur'},{n:'2',p:'Îles : São Vicente et Santiago'},{n:'4',p:'Langues parlées par notre équipe'},{n:'100%',p:'Flotte vérifiée chaque jour dans notre atelier'}]
+    stats:[{n:'2022',p:'Année de création. Les associés ont toutefois plus de 20 ans d’expérience dans le secteur'},{n:'2',p:'Îles : São Vicente et Santiago'},{n:'4',p:'Langues parlées par notre équipe'},{n:'100%',p:'Flotte vérifiée chaque jour dans notre atelier'}]
   },
   faq: [
     ['Qu’est-ce qui est inclus dans la location ?','Un casque pour le conducteur et le passager, l’assurance responsabilité civile obligatoire, qui couvre aussi le conducteur et le passager, et jusqu’à 100 km par jour sur les scooters.'],
-    ['De quoi ai-je besoin pour louer un scooter ou un quad ?','Carte d’identité ou passeport, espèces ou carte de crédit pour la caution, et un permis de conduire valide conforme au Code de la route capverdien.'],
+    ['De quoi ai-je besoin pour louer un scooter ou un quad ?','Un passeport, des espèces ou une carte pour la caution, et un permis de conduire valide. La Taro T9, de 124 cc, exige la catégorie A1 ; les scooters de plus de 125 cc la catégorie A ; les quads la catégorie B.'],
     ['Quelle catégorie de permis faut-il ?','Jusqu’à 124cc : catégorie A1. Scooters au-delà de 124cc : catégorie A. Quads : catégorie B.'],
-    ['À combien s’élève la caution ?','Cela dépend du modèle : 150 € pour la T9 125cc, 200 € pour la T11 300cc, 250 € pour la T12 400cc et 250 € pour le quad. Elle se paie en espèces ou par carte et est restituée au retour du véhicule en bon état. Il n’y a pas de franchise : la responsabilité du client est plafonnée au montant de la caution.'],
+    ['À combien s’élève la caution ?','Cela dépend du modèle : 150 € pour la T9 124 cc, 200 € pour la T11 300 cc, 250 € pour la T12 400 cc et 250 € pour le quad. Elle se paie en espèces ou par carte et est restituée après le retour du véhicule en bon état. En cas de dommages, le client est responsable du montant total, même au-delà de la caution, et paie la différence.'],
     ['Quels moyens de paiement acceptez-vous ?','Espèces en escudos (CVE) ou en euros, et carte VISA.'],
     ['Y a-t-il une limite de kilomètres ?','Le tarif de base scooter comprend 100 km par jour. Au-delà, 33 CVE (0,30 €) par kilomètre supplémentaire s’appliquent. Il existe aussi un tarif 1 jour sans limite : 42 € pour la T9, 48 € pour la T11 et 53 € pour la T12.'],
     ['Livrez-vous à l’hôtel ou à l’aéroport ?','Oui. La livraison et la récupération coûtent 12 € par trajet, ou 20 € par trajet à l’aéroport. L’équipe attend environ 20 minutes après l’heure convenue.'],
     ['Quels sont les horaires de prise en charge et de restitution ?','La prise en charge et la restitution se font entre 09h et 18h. En dehors de ces horaires, c’est possible sur rendez-vous.'],
-    ['Que couvre l’assurance ?','L’assurance couvre les dommages aux tiers et la responsabilité pour le conducteur et le passager. En cas de dommage ou de vol du véhicule, la responsabilité du client est plafonnée au montant de la caution, selon le contrat. Les accessoires, casques et antivols, ne sont pas couverts.'],
-    ['Peut-on souscrire une assurance complémentaire ?','Oui. L’assurance complémentaire coûte 7 € pour la T9, 9 € pour la T11 et 12 € pour la T12, et couvre les dommages jusqu’au montant de la caution, mais pas le vol. Les conditions figurent dans le contrat.'],
+    ['Que couvre l’assurance ?','Tous nos véhicules disposent d’une assurance Responsabilité Civile obligatoire et d’une couverture complémentaire, garantissant une protection en cas d’accident. L’assurance couvre les dommages matériels et corporels causés aux tiers, ainsi que la protection du conducteur et du passager. Toutes les couvertures sont soumises aux conditions, limites et exclusions prévues par la police d’assurance. Pour les dommages au véhicule loué, le client est responsable du montant total, même au-delà de la caution. Les accessoires, casques et antivols, ne sont pas couverts.'],
+    ['Peut-on souscrire une assurance complémentaire ?','Oui, et nous le recommandons. L’assurance complémentaire coûte 7 € par jour pour la T9, 9 € par jour pour la T11 et 12 € par jour pour la T12. Elle couvre les dommages au véhicule jusqu’au montant de la caution, mais pas le vol. Au-delà, la différence est à la charge du client. Les conditions figurent dans le contrat.'],
     ['Puis-je modifier ou annuler ma réservation ?','Oui, jusqu’à 24 heures avant la date et l’heure de début, en écrivant à info@scooter-quad.com. Les annulations à plus de 24 heures sont intégralement remboursées. Dans les 24 heures, les modifications et les annulations remboursées ne sont pas possibles.'],
     ['Quelles sont les durées et les tarifs des excursions ?','Les excursions en quad n’ont lieu qu’à São Vicente : 4 heures à 100 € (à deux) ou 85 € (individuel), et 2 heures à 85 € (à deux) ou 70 € (individuel). Groupes de 2 à 12, avec des guides en portugais, anglais, français et espagnol.'],
     ['Quelles sont les conditions pour participer à une excursion ?','Le conducteur du quad doit avoir plus de 21 ans et un permis de catégorie B. L’âge minimum du passager est de 7 ans. L’activité est déconseillée aux personnes à mobilité réduite.'],
@@ -949,8 +953,8 @@ fr: {
     termos:[
       ['Champ d’application','Ces conditions s’appliquent aux demandes effectuées via le site. Les conditions complètes de location figurent dans le contrat signé lors de la prise en charge du véhicule.'],
       ['Réservations','Les demandes faites sur le site ne sont pas des réservations confirmées. La réservation n’est confirmée qu’après confirmation de notre équipe et paiement de l’acompte de 50 %.'],
-      ['Documents et conditions','Une carte d’identité ou un passeport et un permis de conduire valide pour la catégorie du véhicule sont requis : A1 jusqu’à 124cc, A au-delà de 124cc et B pour les quads. Pour les excursions, le conducteur doit avoir plus de 21 ans.'],
-      ['Caution et responsabilité','Une caution est demandée à la prise en charge et restituée au retour du véhicule en bon état. Il n’y a pas de franchise : la responsabilité du client en cas de dommage ou de vol est plafonnée au montant de la caution, selon le contrat.'],
+      ['Documents et conditions','Un passeport et un permis de conduire valide pour la catégorie du véhicule sont requis : la Taro T9, de 124 cc, exige la catégorie A1 ; les scooters de plus de 125 cc la catégorie A ; les quads la catégorie B. Pour les excursions, le conducteur doit avoir plus de 21 ans.'],
+      ['Caution et responsabilité','Une caution est demandée à la prise en charge, payable en espèces ou par carte, et restituée après le retour du véhicule en bon état. En cas de dommages, le client est responsable du montant total des préjudices causés, même s’il dépasse la caution, et doit payer la différence, selon le contrat.'],
       ['Modifications et annulations','Les modifications et annulations sont possibles jusqu’à 24 heures avant le début, avec remboursement intégral. Dans les 24 heures, elles ne sont pas autorisées et aucun remboursement n’est dû. Une restitution anticipée ne donne pas droit à un remboursement.'],
       ['Utilisation du véhicule','Le casque est obligatoire pour le conducteur et le passager. Le client s’engage à respecter le Code de la route en vigueur au Cap-Vert et à restituer le véhicule avec le carburant au même niveau qu’à la prise en charge.'],
       ['Tarifs','Les tarifs indiqués incluent la TVA et peuvent être mis à jour. Le tarif confirmé au moment de la réservation s’applique.']

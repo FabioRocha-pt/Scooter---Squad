@@ -124,7 +124,9 @@ const AUTOMOVEIS = {
 /* ---------- FROTA POR ILHA ----------
    imgs[] é a galeria de cada veículo. A primeira é a de capa.
    Fotografias reais da pasta do cliente, tratadas em setembro de 2026.
-   Já não dependem do servidor WordPress antigo. */
+   Já não dependem do servidor WordPress antigo.
+   A primeira de cada galeria é, sempre que existe, a vista lateral.
+   As fotos dos painéis e conta-quilómetros não entram, por pedido do cliente. */
 const FROTA = {
   sv: [
     { id:'sv-t9',  n: 'Taro Storm T9',     cc: '124 cc', carta: 'A1', t: 'scooter', p: 32,
@@ -132,7 +134,7 @@ const FROTA = {
     { id:'sv-t11', n: 'Taro Storm-B T11',  cc: '300 cc', carta: 'A', t: 'scooter', p: 38,
       imgs: ['img/F-t11-1.jpg', 'img/F-t11-2.jpg', 'img/F-t11-3.jpg'] },
     { id:'sv-t12', n: 'Taro Huracan T12',  cc: '400 cc', carta: 'A', t: 'scooter', p: 43,
-      imgs: ['img/F-t12-1.jpg', 'img/F-t12-2.jpg', 'img/F-t12-3.jpg'] },
+      imgs: ['img/F-t12-1.jpg', 'img/F-t12-2.jpg'] },
     { id:'sv-qd',  n: 'Quad G Force 520L', cc: '500 cc', carta: 'B', t: 'quad', p: 100, hora: true,
       imgs: ['img/F-quad-1.jpg', 'img/F-quad-2.jpg', 'img/F-quad-3.jpg'] }
   ],
@@ -142,11 +144,11 @@ const FROTA = {
     { id:'st-t11', n: 'Taro Storm-B T11',  cc: '300 cc', carta: 'A', t: 'scooter', p: 38,
       imgs: ['img/F-t11-1.jpg', 'img/F-t11-2.jpg', 'img/F-t11-3.jpg'] },
     { id:'st-t12', n: 'Taro Huracan T12',  cc: '400 cc', carta: 'A', t: 'scooter', p: 43,
-      imgs: ['img/F-t12-1.jpg', 'img/F-t12-2.jpg', 'img/F-t12-3.jpg'] },
+      imgs: ['img/F-t12-1.jpg', 'img/F-t12-2.jpg'] },
     { id:'st-qd',  n: 'Quad CF 520L',      cc: '500 cc', carta: 'B', t: 'quad', p: 100, hora: true,
       imgs: ['img/F-quad-1.jpg', 'img/F-quad-2.jpg', 'img/F-quad-3.jpg'] },
     { id:'st-mitt', n: 'MITT GT-MAX 330',  cc: '300 cc', carta: 'A', t: 'scooter', p: 38,
-      imgs: ['img/E1-mitt-gtmax-330-1.jpg', 'img/E1-mitt-gtmax-330-2.jpg'] }
+      imgs: ['img/E1-mitt-gtmax-330-1.jpg', 'img/E1-mitt-gtmax-330-2.jpg', 'img/E1-mitt-gtmax-330-3.jpg'] }
   ]
 };
 
@@ -201,6 +203,24 @@ const USADOS = [
     estado: 'vendido', ano: null, km: null, ilha: 'st', preco: null,
     imgs: [`${CDN}/2025/02/scooter-vendido.jpg`] }
 ];
+
+/* ---------- PROMOÇÕES DO MÊS ----------
+   Para publicar uma promoção basta acrescentar um objeto a esta lista.
+   - ilha: 'sv' (São Vicente), 'st' (Santiago) ou null para as duas
+   - validade: último dia da promoção, no formato AAAA-MM-DD. No dia seguinte
+     a promoção desaparece sozinha do site, não é preciso apagar
+   - titulo e texto: pelo menos em português. Os idiomas que faltarem
+     mostram o texto em português
+   - servico: o que fica escolhido no formulário ao carregar no botão
+   Sem promoções ativas, a secção não aparece.
+
+   Exemplo:
+   { ilha: 'sv', validade: '2026-11-30', destaque: '-15%',
+     titulo: { pt: 'Volta à Ilha a dois', en: 'Volta à Ilha for two' },
+     texto:  { pt: 'Em novembro, 15% de desconto na excursão de 4 horas para duas pessoas.',
+               en: 'In November, 15% off the 4-hour excursion for two.' },
+     servico: 'Volta à Ilha' } */
+const PROMOCOES = [];
 
 /* ---------- AVALIAÇÕES DE CLIENTES ----------
    A PREENCHER PELO CLIENTE. Duas ou três avaliações reais, escolhidas pela
