@@ -39,10 +39,10 @@ pt: {
     verIlha:'Ver página completa de'
   },
   svc: {
-    exc4T:'Volta à ilha de quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 a 12 pax', exc4Tag:'Excursão guiada · 4h',
+    exc4T:'Volta à ilha de quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 a 12 pax', exc4Tag:'Excursão guiada · 4h', exc4N:'Excursão quad 4h', exc2N:'Excursão quad 2h',
     exc2T:'Costa e miradouros', exc2M:'Monte Cara, Laginha e vilas piscatórias · 2 a 12 pax', exc2Tag:'Excursão guiada · 2h',
-    scT:'Scooter ao teu ritmo', scM:'À hora, ao dia ou à semana · capacetes e seguro incluídos', scTag:'Aluguer',
-    qdT:'Quad ao teu ritmo', qdM:'Explora a ilha sem guia · carta categoria B', qdTag:'Aluguer',
+    scT:'Aluguer de scooter', scM:'À hora, ao dia ou à semana · capacetes e seguro incluídos', scTag:'Aluguer',
+    qdT:'Aluguer de quad', qdM:'Explora a ilha sem guia · carta categoria B', qdTag:'Aluguer',
     ldT:'Longa duração', ldM:'A partir de 30 dias, para empresas e particulares · seguro, manutenção e veículo de substituição', ldTag:'Frota',
     desde:'Desde', dia:'/dia', sobConsulta:'Sob consulta', proposta:'Proposta à medida'
   },
@@ -106,7 +106,7 @@ pt: {
     reserva:'Reserva', reservaV:'50% do valor, pago no momento da reserva',
     combustivel:'Combustível', combustivelV:'Preço de mercado por litro',
     quadNota:'O quad é alugado por blocos de horas, sempre com início às 09h ou às 18h.',
-    excDuplo:'Duplo', excInd:'Individual', excNota:'Grupos de 2 a 12 participantes. A Volta à Ilha sai às 09:00 ou às 14:00; a Costa Norte sai às 15:00. Condutor com mais de 21 anos e carta de categoria B. Guias em português, inglês, francês e espanhol.',
+    excDuplo:'Duplo', excInd:'Individual', excNota:'Grupos de 2 a 12 participantes. A Excursão quad 4h sai às 09:00 ou às 14:00; a Excursão quad 2h sai às 15:00. Condutor com mais de 21 anos e carta de categoria B. Guias em português, inglês, francês e espanhol.',
     horas:'horas', partida:'partida às'
   },
   ilha: {
@@ -172,7 +172,7 @@ pt: {
     entregaOp:['Na loja','No hotel (12 € por trajeto)','No aeroporto (20 € por trajeto)'],
     condicoes:'Li e aceito as condições: depósito de 50% para confirmar a reserva, caução na entrega e política de cancelamento até 24 horas antes.',
     erro:'Preenche os campos obrigatórios (*) e aceita as condições antes de enviar.',
-    enviar:'Enviar pedido', nota:'Ao enviar abre o teu programa de email com o pedido preenchido. Se preferires, usa o WhatsApp.',
+    enviar:'Enviar pedido', nota:'O pedido segue por email para a equipa da ilha escolhida. Se preferires, usa o WhatsApp.', aEnviar:'A enviar…',
     resumoT:'Resumo do pedido', tipo:'Tipo', datas:'Datas', deposito:'Depósito', depositoV:'50% para confirmar',
     seguirT:'O que acontece a seguir',
     seguir:[
@@ -182,8 +182,8 @@ pt: {
       {t:'Levantamento', p:'Na loja, no hotel ou no aeroporto, conforme escolheste.'}
     ],
     jaT:'Preferes falar já?',
-    okT:'Pedido pronto a enviar!',
-    okP:'Abrimos o teu programa de email com todos os dados preenchidos. Basta carregares em enviar. Se não abriu, usa o WhatsApp abaixo.',
+    okT:'Pedido enviado!', okTMail:'Pedido pronto a enviar!',
+    okP:'Recebemos o teu pedido. A nossa equipa responde em breve por email ou WhatsApp.', okPMail:'Abrimos o teu programa de email com todos os dados preenchidos. Basta carregares em enviar. Se não abriu, usa o WhatsApp abaixo.',
     okRef:'Guarda a referência para acompanhares o pedido.',
     outro:'Fazer outro pedido'
   },
@@ -283,10 +283,10 @@ en: {
     verIlha:'See the full page for'
   },
   svc: {
-    exc4T:'Island loop by quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 to 12 pax', exc4Tag:'Guided tour · 4h',
+    exc4T:'Island loop by quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 to 12 pax', exc4Tag:'Guided tour · 4h', exc4N:'Quad tour 4h', exc2N:'Quad tour 2h',
     exc2T:'Coast and viewpoints', exc2M:'Monte Cara, Laginha and fishing villages · 2 to 12 pax', exc2Tag:'Guided tour · 2h',
-    scT:'Scooter at your own pace', scM:'By the hour, day or week · helmets and insurance included', scTag:'Rental',
-    qdT:'Quad at your own pace', qdM:'Explore the island without a guide · category B licence', qdTag:'Rental',
+    scT:'Scooter rental', scM:'By the hour, day or week · helmets and insurance included', scTag:'Rental',
+    qdT:'Quad rental', qdM:'Explore the island without a guide · category B licence', qdTag:'Rental',
     ldT:'Long term', ldM:'From 30 days, for companies and individuals · insurance, maintenance and replacement vehicle', ldTag:'Fleet',
     desde:'From', dia:'/day', sobConsulta:'On request', proposta:'Tailored quote'
   },
@@ -345,7 +345,7 @@ en: {
     reserva:'Booking', reservaV:'50% of the total, paid at the time of booking',
     combustivel:'Fuel', combustivelV:'Market price per litre',
     quadNota:'Quads are rented in blocks of hours, always starting at 09:00 or 18:00.',
-    excDuplo:'Two riders', excInd:'Single', excNota:'Groups of 2 to 12. Volta à Ilha departs at 09:00 or 14:00; Costa Norte departs at 15:00. Driver over 21 with a category B licence. Guides in Portuguese, English, French and Spanish.',
+    excDuplo:'Two riders', excInd:'Single', excNota:'Groups of 2 to 12. The 4h quad tour departs at 09:00 or 14:00; the 2h quad tour departs at 15:00. Driver over 21 with a category B licence. Guides in Portuguese, English, French and Spanish.',
     horas:'hours', partida:'departs at'
   },
   ilha: {
@@ -409,7 +409,7 @@ en: {
     entregaOp:['At the shop','At the hotel (12 € each way)','At the airport (20 € each way)'],
     condicoes:'I have read and accept the conditions: 50% deposit to confirm the booking, security deposit on collection and cancellation policy up to 24 hours before.',
     erro:'Please fill in the required fields (*) and accept the conditions before sending.',
-    enviar:'Send request', nota:'Sending opens your email app with the request filled in. If you prefer, use WhatsApp.',
+    enviar:'Send request', nota:'Your request goes by email to the team on the island you chose. If you prefer, use WhatsApp.', aEnviar:'Sending…',
     resumoT:'Request summary', tipo:'Type', datas:'Dates', deposito:'Deposit', depositoV:'50% to confirm',
     seguirT:'What happens next',
     seguir:[
@@ -419,8 +419,8 @@ en: {
       {t:'Pick-up', p:'At the shop, hotel or airport, as you chose.'}
     ],
     jaT:'Prefer to talk now?',
-    okT:'Your request is ready to send!',
-    okP:'We opened your email app with all the details filled in. Just press send. If it did not open, use WhatsApp below.',
+    okT:'Request sent!', okTMail:'Your request is ready to send!',
+    okP:'We have received your request. Our team will reply soon by email or WhatsApp.', okPMail:'We opened your email app with all the details filled in. Just press send. If it did not open, use WhatsApp below.',
     okRef:'Keep the reference to follow up on your request.',
     outro:'Make another request'
   },
@@ -517,10 +517,10 @@ it: {
     verIlha:'Vedi la pagina completa di'
   },
   svc: {
-    exc4T:'Giro dell’isola in quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · da 2 a 12 pax', exc4Tag:'Escursione guidata · 4h',
+    exc4T:'Giro dell’isola in quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · da 2 a 12 pax', exc4Tag:'Escursione guidata · 4h', exc4N:'Escursione in quad 4h', exc2N:'Escursione in quad 2h',
     exc2T:'Costa e panorami', exc2M:'Monte Cara, Laginha e villaggi di pescatori · da 2 a 12 pax', exc2Tag:'Escursione guidata · 2h',
-    scT:'Scooter al tuo ritmo', scM:'A ore, al giorno o alla settimana · caschi e assicurazione inclusi', scTag:'Noleggio',
-    qdT:'Quad al tuo ritmo', qdM:'Esplora l’isola senza guida · patente categoria B', qdTag:'Noleggio',
+    scT:'Noleggio scooter', scM:'A ore, al giorno o alla settimana · caschi e assicurazione inclusi', scTag:'Noleggio',
+    qdT:'Noleggio quad', qdM:'Esplora l’isola senza guida · patente categoria B', qdTag:'Noleggio',
     ldT:'Lungo termine', ldM:'Da 30 giorni, per aziende e privati · assicurazione, manutenzione e veicolo sostitutivo', ldTag:'Flotta',
     desde:'Da', dia:'/giorno', sobConsulta:'Su richiesta', proposta:'Proposta su misura'
   },
@@ -579,7 +579,7 @@ it: {
     reserva:'Prenotazione', reservaV:'50% del totale, al momento della prenotazione',
     combustivel:'Carburante', combustivelV:'Prezzo di mercato al litro',
     quadNota:'Il quad si noleggia a blocchi di ore, sempre con inizio alle 09:00 o alle 18:00.',
-    excDuplo:'In due', excInd:'Singolo', excNota:'Gruppi da 2 a 12 partecipanti. Volta à Ilha parte alle 09:00 o alle 14:00; Costa Norte parte alle 15:00. Conducente over 21 con patente di categoria B. Guide in portoghese, inglese, francese e spagnolo.',
+    excDuplo:'In due', excInd:'Singolo', excNota:'Gruppi da 2 a 12 partecipanti. L’escursione in quad di 4h parte alle 09:00 o alle 14:00; quella di 2h parte alle 15:00. Conducente over 21 con patente di categoria B. Guide in portoghese, inglese, francese e spagnolo.',
     horas:'ore', partida:'partenza alle'
   },
   ilha: {
@@ -643,7 +643,7 @@ it: {
     entregaOp:['In negozio','In hotel (12 € a tratta)','In aeroporto (20 € a tratta)'],
     condicoes:'Ho letto e accetto le condizioni: acconto del 50% per confermare la prenotazione, cauzione al ritiro e politica di cancellazione fino a 24 ore prima.',
     erro:'Compila i campi obbligatori (*) e accetta le condizioni prima di inviare.',
-    enviar:'Invia richiesta', nota:'L’invio apre il tuo programma di posta con la richiesta già compilata. Se preferisci, usa WhatsApp.',
+    enviar:'Invia richiesta', nota:'La richiesta arriva via email al team dell’isola scelta. Se preferisci, usa WhatsApp.', aEnviar:'Invio in corso…',
     resumoT:'Riepilogo della richiesta', tipo:'Tipo', datas:'Date', deposito:'Acconto', depositoV:'50% per confermare',
     seguirT:'Cosa succede dopo',
     seguir:[
@@ -653,8 +653,8 @@ it: {
       {t:'Ritiro', p:'In negozio, in hotel o in aeroporto, come hai scelto.'}
     ],
     jaT:'Preferisci parlarne subito?',
-    okT:'Richiesta pronta da inviare!',
-    okP:'Abbiamo aperto il tuo programma di posta con tutti i dati compilati. Basta premere invia. Se non si è aperto, usa WhatsApp qui sotto.',
+    okT:'Richiesta inviata!', okTMail:'Richiesta pronta da inviare!',
+    okP:'Abbiamo ricevuto la tua richiesta. Il nostro team risponde presto via email o WhatsApp.', okPMail:'Abbiamo aperto il tuo programma di posta con tutti i dati compilati. Basta premere invia. Se non si è aperto, usa WhatsApp qui sotto.',
     okRef:'Conserva il riferimento per seguire la tua richiesta.',
     outro:'Fai un’altra richiesta'
   },
@@ -751,10 +751,10 @@ fr: {
     verIlha:'Voir la page complète de'
   },
   svc: {
-    exc4T:'Tour de l’île en quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 à 12 pers.', exc4Tag:'Excursion guidée · 4h',
+    exc4T:'Tour de l’île en quad', exc4M:'Mindelo → Salamansa → Baía das Gatas → Calhau · 2 à 12 pers.', exc4Tag:'Excursion guidée · 4h', exc4N:'Excursion en quad 4h', exc2N:'Excursion en quad 2h',
     exc2T:'Côte et points de vue', exc2M:'Monte Cara, Laginha et villages de pêcheurs · 2 à 12 pers.', exc2Tag:'Excursion guidée · 2h',
-    scT:'Scooter à votre rythme', scM:'À l’heure, à la journée ou à la semaine · casques et assurance inclus', scTag:'Location',
-    qdT:'Quad à votre rythme', qdM:'Explorez l’île sans guide · permis catégorie B', qdTag:'Location',
+    scT:'Location de scooter', scM:'À l’heure, à la journée ou à la semaine · casques et assurance inclus', scTag:'Location',
+    qdT:'Location de quad', qdM:'Explorez l’île sans guide · permis catégorie B', qdTag:'Location',
     ldT:'Longue durée', ldM:'À partir de 30 jours, pour entreprises et particuliers · assurance, entretien et véhicule de remplacement', ldTag:'Flotte',
     desde:'À partir de', dia:'/jour', sobConsulta:'Sur demande', proposta:'Devis sur mesure'
   },
@@ -813,7 +813,7 @@ fr: {
     reserva:'Réservation', reservaV:'50 % du total, au moment de la réservation',
     combustivel:'Carburant', combustivelV:'Prix du marché au litre',
     quadNota:'Le quad se loue par blocs d’heures, toujours à partir de 09h ou 18h.',
-    excDuplo:'À deux', excInd:'Individuel', excNota:'Groupes de 2 à 12 personnes. Volta à Ilha part à 09:00 ou à 14:00 ; Costa Norte part à 15:00. Conducteur de plus de 21 ans avec permis de catégorie B. Guides en portugais, anglais, français et espagnol.',
+    excDuplo:'À deux', excInd:'Individuel', excNota:'Groupes de 2 à 12 personnes. L’excursion en quad de 4h part à 09:00 ou à 14:00 ; celle de 2h part à 15:00. Conducteur de plus de 21 ans avec permis de catégorie B. Guides en portugais, anglais, français et espagnol.',
     horas:'heures', partida:'départ à'
   },
   ilha: {
@@ -877,7 +877,7 @@ fr: {
     entregaOp:['À la boutique','À l’hôtel (12 € par trajet)','À l’aéroport (20 € par trajet)'],
     condicoes:'J’ai lu et j’accepte les conditions : acompte de 50 % pour confirmer la réservation, caution à la prise en charge et politique d’annulation jusqu’à 24 heures avant.',
     erro:'Remplissez les champs obligatoires (*) et acceptez les conditions avant d’envoyer.',
-    enviar:'Envoyer la demande', nota:'L’envoi ouvre votre messagerie avec la demande déjà remplie. Si vous préférez, utilisez WhatsApp.',
+    enviar:'Envoyer la demande', nota:'Votre demande part par email à l’équipe de l’île choisie. Si vous préférez, utilisez WhatsApp.', aEnviar:'Envoi en cours…',
     resumoT:'Résumé de la demande', tipo:'Type', datas:'Dates', deposito:'Acompte', depositoV:'50 % pour confirmer',
     seguirT:'Ce qui se passe ensuite',
     seguir:[
@@ -887,8 +887,8 @@ fr: {
       {t:'Prise en charge', p:'À la boutique, à l’hôtel ou à l’aéroport, selon votre choix.'}
     ],
     jaT:'Vous préférez en parler tout de suite ?',
-    okT:'Votre demande est prête à partir !',
-    okP:'Nous avons ouvert votre messagerie avec toutes les informations. Il ne reste qu’à envoyer. Si elle ne s’est pas ouverte, utilisez WhatsApp ci-dessous.',
+    okT:'Demande envoyée !', okTMail:'Votre demande est prête à partir !',
+    okP:'Nous avons bien reçu votre demande. Notre équipe vous répond bientôt par email ou WhatsApp.', okPMail:'Nous avons ouvert votre messagerie avec toutes les informations. Il ne reste qu’à envoyer. Si elle ne s’est pas ouverte, utilisez WhatsApp ci-dessous.',
     okRef:'Conservez la référence pour suivre votre demande.',
     outro:'Faire une autre demande'
   },

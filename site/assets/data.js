@@ -71,9 +71,9 @@ const PRECOS_QUAD = {
    Confirmado pelo cliente a 27/09: as duas mantêm-se, com horários diferentes.
    A de 4 horas sai às 09:00 ou às 14:00. A de 2 horas sai só à tarde, às 15:00. */
 const EXCURSOES = [
-  { horas: 4, nome: 'Volta à Ilha', duplo: 100, individual: 85,
+  { horas: 4, nome: 'Excursão quad 4h', duplo: 100, individual: 85,
     partidas: ['09:00', '14:00'], ativa: true },
-  { horas: 2, nome: 'Costa Norte',  duplo: 85,  individual: 70,
+  { horas: 2, nome: 'Excursão quad 2h', duplo: 85,  individual: 70,
     partidas: ['15:00'], ativa: true }
 ];
 const EXCURSOES_ATIVAS = EXCURSOES.filter(e => e.ativa);

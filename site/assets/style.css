@@ -103,8 +103,8 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.03;le
 .search .go:hover{background:var(--orange-d);transform:translateY(-2px)}
 
 /* SECTIONS */
-.section{padding:76px 0}
-.section-tight{padding:44px 0}
+.section{padding:32px 0} /* 64px entre secções (32 + 32), pedido do cliente a 11/11 */
+.section-tight{padding:32px 0}
 .sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px;flex-wrap:wrap}
 .sec-head h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800}
 .sec-head p{color:var(--slate);max-width:520px;font-size:.98rem}
@@ -608,8 +608,8 @@ body{animation:pageIn .4s ease both}
   .container{padding:0 18px}
   .grid3{grid-template-columns:1fr}
   footer .fgrid{grid-template-columns:1fr}
-  .section{padding:50px 0}
-  .section-tight{padding:34px 0}
+  .section{padding:32px 0}
+  .section-tight{padding:32px 0}
   .hero h1{font-size:clamp(2.3rem,10vw,3rem)}
   .hero .sub{font-size:1rem}
   .page-hero h1{font-size:clamp(2rem,9vw,2.6rem)}
@@ -981,3 +981,6 @@ a.rev-fonte:hover{ color:var(--ink); border-bottom-color:var(--ink) }
 .promo-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
   padding-top:14px; border-top:1px dashed rgba(255,107,26,.35) }
 .promo-val{ font-size:.78rem; font-weight:600; color:var(--orange-d); letter-spacing:.02em }
+
+/* armadilha anti-spam do formulário (pedido.html) */
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}

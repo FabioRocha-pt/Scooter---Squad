@@ -228,7 +228,7 @@ function setIlha(k) {
       const dois = e.horas === 2;
       svc.push({
         tag: dois ? T.svc.exc2Tag : T.svc.exc4Tag,
-        t: e.nome,
+        t: nomeExc(e),
         m: dois ? T.svc.exc2M : T.svc.exc4M,
         desc: dois ? T.svcDesc.exc2 : T.svcDesc.exc4,
         from: T.svc.desde, v: fmtEUR(e.individual),
@@ -271,7 +271,7 @@ function setIlha(k) {
 
   const sel = document.getElementById('qServ');
   const ops = d.excursoes
-    ? EXCURSOES_ATIVAS.map(e => e.nome).concat([T.svc.scT, T.svc.qdT])
+    ? EXCURSOES_ATIVAS.map(nomeExc).concat([T.svc.scT, T.svc.qdT])
     : [T.svc.scT, T.svc.qdT, T.svc.ldT];
   if (temCarros(k)) ops.push(T.carros.t);
   sel.innerHTML = ops.map(o => `<option>${o}</option>`).join('');

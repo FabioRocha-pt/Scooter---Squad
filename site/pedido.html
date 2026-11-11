@@ -56,6 +56,7 @@ body{background-image:radial-gradient(600px 400px at 90% -10%,rgba(255,201,60,.2
         <div class="field hideable" id="fEntrega"><label for="entrega" id="lEntrega"></label><select id="entrega" onchange="sync()"></select></div>
         <div class="field hideable" id="fModelo"><label for="modelo" id="lModelo"></label><select id="modelo" onchange="sync()"></select></div>
 
+        <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="field full"><label for="msg" id="lMsg"></label><textarea id="msg" rows="4"></textarea></div>
         <div class="field full chk">
           <input type="checkbox" id="cond">
@@ -181,7 +182,7 @@ function encher() {
   const sv = document.getElementById('servico'), ve = document.getElementById('veiculo');
   if (tipo === 'excursao') {
     sv.innerHTML = EXCURSOES.map(e =>
-      `<option>${e.horas} ${T.precos.horas} · ${fmtEUR(e.duplo)} ${T.precos.excDuplo} / ${fmtEUR(e.individual)} ${T.precos.excInd}</option>`).join('');
+      `<option>${nomeExc(e)} · ${fmtEUR(e.duplo)} ${T.precos.excDuplo} / ${fmtEUR(e.individual)} ${T.precos.excInd}</option>`).join('');
   } else {
     const ops = [T.svc.scT, T.svc.qdT, T.svc.ldT];
     sv.innerHTML = ops.map(o => `<option>${o}</option>`).join('');
@@ -213,7 +214,7 @@ function sync() {
   set('sEnt', g('entrega'));
 }
 
-function enviar(e) {
+async function enviar(e) {
   e.preventDefault();
   const g = id => document.getElementById(id).value.trim();
   const nome = g('nome'), tel = g('tel'), email = g('email'), ilha = g('ilhaSel');
@@ -222,13 +223,9 @@ function enviar(e) {
   }
   document.getElementById('err').style.display = 'none';
 
-  const n = (parseInt(localStorage.getItem('sq-n') || '0') + 1);
-  localStorage.setItem('sq-n', n);
-  const ref = 'SQ-' + new Date().getFullYear() + '-' + String(n).padStart(4, '0');
-
   const L = [];
-  const add = (k, v) => { if (v) L.push(k + ': ' + v); };
-  add('Ref', ref); add(F.tipo, F.tipos[tipo]); add(F.nome, nome);
+  const add = (k, v) => { if (v) L.push([k, v]); };
+  add(F.tipo, F.tipos[tipo]); add(F.nome, nome);
   add(F.tel, tel); add(F.email, email); add(F.ilha, ilha);
   if (tipo === 'reserva' || tipo === 'excursao') add(F.servico, g('servico'));
   if (tipo === 'reserva') { add(F.veiculo, g('veiculo')); add(F.entrega, g('entrega')); }
@@ -238,16 +235,48 @@ function enviar(e) {
   if (tipo === 'excursao') add(F.pax, g('pax'));
   add(F.msg, g('msg'));
 
-  const assunto = `[${ref}] ${F.tipos[tipo]} · ${ilha}`;
-  const corpo = L.join('\n');
-
   /* Encaminhamento por ilha, pedido na reunião de setembro:
-     Mindelo vai para reservas.mindelo, Praia vai para reservas.praia. */
+     Mindelo vai para reservas.mindelo, Praia vai para reservas.praia.
+     O servidor (api/pedido.php) faz o mesmo e põe o admin em cópia. */
   const daPraia = ilha.includes('Santiago') || ilha.includes('Praia');
   const wa      = daPraia ? CONTACTOS.praia.link  : CONTACTOS.mindelo.link;
   const destino = daPraia ? CONTACTOS.praia.email : CONTACTOS.mindelo.email;
 
-  location.href = `mailto:${destino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+  const bt = document.getElementById('bEnviar');
+  bt.disabled = true; bt.textContent = F.aEnviar;
+
+  /* 1.º o servidor envia o email. Se falhar, abre o programa de email do cliente. */
+  let ref = '', viaServidor = false;
+  try {
+    const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+    const tm = ctl ? setTimeout(() => ctl.abort(), 20000) : 0;
+    const r = await fetch('api/pedido.php', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, tel, email, ilha, tipo: F.tipos[tipo], linhas: L,
+                             website: g('website'), idioma: LANG }),
+      signal: ctl ? ctl.signal : undefined
+    });
+    clearTimeout(tm);
+    const j = await r.json();
+    if (j && j.ref) ref = j.ref;          /* a ref do servidor vale mesmo se o envio falhar */
+    viaServidor = !!(j && j.ok);
+  } catch (_) { /* sem rede ou sem servidor: segue para o plano B */ }
+
+  bt.disabled = false; bt.textContent = F.enviar;
+
+  if (!ref) {
+    const n = (parseInt(localStorage.getItem('sq-n') || '0') + 1);
+    localStorage.setItem('sq-n', n);
+    ref = 'SQ-' + new Date().getFullYear() + '-' + String(n).padStart(4, '0');
+  }
+  const assunto = `[${ref}] ${F.tipos[tipo]} · ${ilha}`;
+  const corpo = ['Ref: ' + ref].concat(L.map(([k, v]) => k + ': ' + v)).join('\n');
+
+  if (!viaServidor) {
+    location.href = `mailto:${destino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+  }
+  set('okT', viaServidor ? F.okT : F.okTMail);
+  set('okP', viaServidor ? F.okP : F.okPMail);
 
   document.getElementById('ref').textContent = ref;
   const b = document.getElementById('bWa');

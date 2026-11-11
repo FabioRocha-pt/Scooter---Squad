@@ -255,7 +255,7 @@ function tabelaExcursoes() {
       <thead><tr><th>${T.precos.duracao}</th><th>${T.precos.excDuplo}</th><th>${T.precos.excInd}</th></tr></thead>
       <tbody>
         ${EXCURSOES_ATIVAS.map(e => `<tr>
-          <td class="d">${e.nome}<br><span style="font-weight:400;color:var(--slate);font-size:.8rem">${e.horas} ${T.precos.horas} · ${T.precos.partida} ${e.partidas.join(' / ')}</span></td>
+          <td class="d">${nomeExc(e)}<br><span style="font-weight:400;color:var(--slate);font-size:.8rem">${e.horas} ${T.precos.horas} · ${T.precos.partida} ${e.partidas.join(' / ')}</span></td>
           <td class="eur">${fmtEUR(e.duplo)}</td><td class="eur">${fmtEUR(e.individual)}</td></tr>`).join('')}
       </tbody>
     </table>
@@ -375,8 +375,12 @@ function estrelas(n) {
   return `<div class="stars" aria-label="${n}/5">${s}</div>`;
 }
 
+/* nome da excursão no idioma ativo; cai no nome do data.js */
+function nomeExc(e) { return (T.svc && T.svc["exc" + e.horas + "N"]) || e.nome; }
+
 function renderAvaliacoes(el) {
-  if (!Array.isArray(AVALIACOES) || !AVALIACOES.length) { el.hidden = true; return; }
+  /* sem avaliações esconde a secção inteira, senão fica o espaço vazio */
+  if (!Array.isArray(AVALIACOES) || !AVALIACOES.length) { (el.closest('section') || el).hidden = true; return; }
   const A = T.avaliacoes;
 
   /* a origem aparece sempre: é o que torna a avaliação verificável e é
