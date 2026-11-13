@@ -7,6 +7,11 @@
 
 const CDN = 'https://www.scooter-quad.com/wp-content/uploads';
 
+/* Verificação humana do formulário (Google reCAPTCHA v2, caixa "Não sou um robô").
+   Esta é a chave PÚBLICA (site key). A chave secreta fica no servidor, em
+   private/scooter-email.php ('recaptcha_secret'). Vazia = verificação desligada. */
+const RECAPTCHA_SITEKEY = '6LcSSR4uAAAAAF72Yd1ZQJiCnBJfZlvvvO6H2uow';
+
 const CONTACTOS = {
   email: 'info@scooter-quad.com',
   mindelo: {

@@ -62,6 +62,7 @@ body{background-image:radial-gradient(600px 400px at 90% -10%,rgba(255,201,60,.2
           <input type="checkbox" id="cond">
           <label for="cond" style="text-transform:none;letter-spacing:0;font-size:.8rem;font-weight:500" id="lCond"></label>
         </div>
+        <div class="field full" id="fHumano" style="display:none"><div id="humano"></div></div>
         <div class="field full">
           <span class="err" id="err"></span>
           <button class="btn btn-orange" type="submit" style="width:100%" id="bEnviar"></button>
@@ -219,9 +220,14 @@ async function enviar(e) {
   const g = id => document.getElementById(id).value.trim();
   const nome = g('nome'), tel = g('tel'), email = g('email'), ilha = g('ilhaSel');
   if (!nome || !tel || !email || !ilha || !document.getElementById('cond').checked) {
-    document.getElementById('err').style.display = 'block'; return;
+    set('err', F.erro); document.getElementById('err').style.display = 'block'; return;
   }
   document.getElementById('err').style.display = 'none';
+
+  /* verificação humana: sem a caixa confirmada, não envia */
+  const comHumano = !!RECAPTCHA_SITEKEY && !!window.grecaptcha && HUMANO !== null;
+  const humano = comHumano ? (grecaptcha.getResponse(HUMANO) || '') : '';
+  if (comHumano && !humano) { erroHumano(); return; }
 
   const L = [];
   const add = (k, v) => { if (v) L.push([k, v]); };
@@ -246,23 +252,28 @@ async function enviar(e) {
   bt.disabled = true; bt.textContent = F.aEnviar;
 
   /* 1.º o servidor envia o email. Se falhar, abre o programa de email do cliente. */
-  let ref = '', viaServidor = false;
-  try {
+  /* Se a verificação está ligada mas não carregou (bloqueador, rede), o servidor
+     recusaria o pedido: segue-se direto para o plano B (email do cliente). */
+  let ref = '', viaServidor = false, recusado = false;
+  if (!RECAPTCHA_SITEKEY || comHumano) try {
     const ctl = typeof AbortController === 'function' ? new AbortController() : null;
     const tm = ctl ? setTimeout(() => ctl.abort(), 20000) : 0;
     const r = await fetch('api/pedido.php', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, tel, email, ilha, tipo: F.tipos[tipo], linhas: L,
-                             website: g('website'), idioma: LANG }),
+                             website: g('website'), idioma: LANG, humano }),
       signal: ctl ? ctl.signal : undefined
     });
     clearTimeout(tm);
     const j = await r.json();
     if (j && j.ref) ref = j.ref;          /* a ref do servidor vale mesmo se o envio falhar */
     viaServidor = !!(j && j.ok);
+    recusado = !!(j && j.erro === 'humano');
   } catch (_) { /* sem rede ou sem servidor: segue para o plano B */ }
 
   bt.disabled = false; bt.textContent = F.enviar;
+  if (comHumano) grecaptcha.reset(HUMANO);   /* cada confirmação só serve para um envio */
+  if (recusado) { erroHumano(); return; }
 
   if (!ref) {
     const n = (parseInt(localStorage.getItem('sq-n') || '0') + 1);
@@ -286,6 +297,23 @@ async function enviar(e) {
   document.getElementById('head').style.display = 'none';
   document.getElementById('ok').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---------- verificação humana (Google reCAPTCHA v2) ---------- */
+let HUMANO = null;
+function erroHumano() {
+  set('err', F.humano); document.getElementById('err').style.display = 'block';
+  document.getElementById('fHumano').scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+function sqCaptcha() {
+  document.getElementById('fHumano').style.display = 'block';
+  HUMANO = grecaptcha.render('humano', { sitekey: RECAPTCHA_SITEKEY, theme: 'light' });
+}
+if (RECAPTCHA_SITEKEY) {
+  const sc = document.createElement('script');
+  sc.src = 'https://www.google.com/recaptcha/api.js?render=explicit&onload=sqCaptcha&hl=' + encodeURIComponent(LANG);
+  sc.async = true; sc.defer = true;
+  document.head.appendChild(sc);
 }
 
 function novo() {

@@ -9,7 +9,7 @@ function cab_utf8(string $s): string {
 }
 
 function envia_email(array $cfg, string $para, array $cc, string $responderA, string $nomeCliente,
-                     string $assunto, string $corpo): void {
+                     string $assunto, string $corpo, string $html = ''): void {
   $de     = $cfg['de'] ?? ($cfg['smtp_user'] ?? 'noreply@scooter-quad.com');
   $deNome = $cfg['de_nome'] ?? 'Site Scooter & Quad';
 
@@ -23,9 +23,20 @@ function envia_email(array $cfg, string $para, array $cc, string $responderA, st
   $cab[] = 'Subject: ' . cab_utf8($assunto);
   $cab[] = 'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . substr(strrchr($de, '@'), 1) . '>';
   $cab[] = 'MIME-Version: 1.0';
-  $cab[] = 'Content-Type: text/plain; charset=UTF-8';
-  $cab[] = 'Content-Transfer-Encoding: base64';
-  $mensagem = implode("\r\n", $cab) . "\r\n\r\n" . rtrim(chunk_split(base64_encode($corpo), 76, "\r\n"));
+  $b64 = fn(string $t): string => rtrim(chunk_split(base64_encode($t), 76, "\r\n"));
+  if ($html === '') {
+    $cab[] = 'Content-Type: text/plain; charset=UTF-8';
+    $cab[] = 'Content-Transfer-Encoding: base64';
+    $mensagem = implode("\r\n", $cab) . "\r\n\r\n" . $b64($corpo);
+  } else {
+    /* texto simples + HTML no mesmo email: cada programa de email mostra o que souber */
+    $lim = 'sq-' . bin2hex(random_bytes(12));
+    $cab[] = 'Content-Type: multipart/alternative; boundary="' . $lim . '"';
+    $parte = fn(string $tipo, string $t): string =>
+      "--$lim\r\nContent-Type: $tipo; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . $b64($t) . "\r\n";
+    $mensagem = implode("\r\n", $cab) . "\r\n\r\n"
+      . $parte('text/plain', $corpo) . $parte('text/html', $html) . "--$lim--";
+  }
 
   /* o servidor (Hetzner) tem as portas 25 e 465 bloqueadas: só SMTP autenticado na 587 */
   if (empty($cfg['smtp_host'])) throw new RuntimeException('smtp_host não configurado');

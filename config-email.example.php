@@ -20,4 +20,12 @@ return [
   /* em testes: tudo vai para este endereço, com o destino real no assunto.
      Deixar vazio ('') para o funcionamento normal. */
   'teste_para'  => '',
+
+  /* verificação humana do formulário (Google reCAPTCHA v2): chave SECRETA.
+     A chave pública (site key) vai em site/assets/data.js, RECAPTCHA_SITEKEY.
+     Vazio ('') = verificação desligada. */
+  'recaptcha_secret' => '',
+
+  /* endereço de onde o email vai buscar o logótipo */
+  'site_url' => 'https://www.scooter-quad.com',
 ];

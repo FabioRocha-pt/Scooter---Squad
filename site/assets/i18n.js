@@ -172,7 +172,7 @@ pt: {
     entregaOp:['Na loja','No hotel (12 € por trajeto)','No aeroporto (20 € por trajeto)'],
     condicoes:'Li e aceito as condições: depósito de 50% para confirmar a reserva, caução na entrega e política de cancelamento até 24 horas antes.',
     erro:'Preenche os campos obrigatórios (*) e aceita as condições antes de enviar.',
-    enviar:'Enviar pedido', nota:'O pedido segue por email para a equipa da ilha escolhida. Se preferires, usa o WhatsApp.', aEnviar:'A enviar…',
+    enviar:'Enviar pedido', nota:'O pedido segue por email para a equipa da ilha escolhida. Se preferires, usa o WhatsApp.', aEnviar:'A enviar…', humano:'Confirma que és uma pessoa (caixa de verificação) antes de enviar.',
     resumoT:'Resumo do pedido', tipo:'Tipo', datas:'Datas', deposito:'Depósito', depositoV:'50% para confirmar',
     seguirT:'O que acontece a seguir',
     seguir:[
@@ -409,7 +409,7 @@ en: {
     entregaOp:['At the shop','At the hotel (12 € each way)','At the airport (20 € each way)'],
     condicoes:'I have read and accept the conditions: 50% deposit to confirm the booking, security deposit on collection and cancellation policy up to 24 hours before.',
     erro:'Please fill in the required fields (*) and accept the conditions before sending.',
-    enviar:'Send request', nota:'Your request goes by email to the team on the island you chose. If you prefer, use WhatsApp.', aEnviar:'Sending…',
+    enviar:'Send request', nota:'Your request goes by email to the team on the island you chose. If you prefer, use WhatsApp.', aEnviar:'Sending…', humano:'Please confirm you are human (verification box) before sending.',
     resumoT:'Request summary', tipo:'Type', datas:'Dates', deposito:'Deposit', depositoV:'50% to confirm',
     seguirT:'What happens next',
     seguir:[
@@ -643,7 +643,7 @@ it: {
     entregaOp:['In negozio','In hotel (12 € a tratta)','In aeroporto (20 € a tratta)'],
     condicoes:'Ho letto e accetto le condizioni: acconto del 50% per confermare la prenotazione, cauzione al ritiro e politica di cancellazione fino a 24 ore prima.',
     erro:'Compila i campi obbligatori (*) e accetta le condizioni prima di inviare.',
-    enviar:'Invia richiesta', nota:'La richiesta arriva via email al team dell’isola scelta. Se preferisci, usa WhatsApp.', aEnviar:'Invio in corso…',
+    enviar:'Invia richiesta', nota:'La richiesta arriva via email al team dell’isola scelta. Se preferisci, usa WhatsApp.', aEnviar:'Invio in corso…', humano:'Conferma di essere una persona (casella di verifica) prima di inviare.',
     resumoT:'Riepilogo della richiesta', tipo:'Tipo', datas:'Date', deposito:'Acconto', depositoV:'50% per confermare',
     seguirT:'Cosa succede dopo',
     seguir:[
@@ -877,7 +877,7 @@ fr: {
     entregaOp:['À la boutique','À l’hôtel (12 € par trajet)','À l’aéroport (20 € par trajet)'],
     condicoes:'J’ai lu et j’accepte les conditions : acompte de 50 % pour confirmer la réservation, caution à la prise en charge et politique d’annulation jusqu’à 24 heures avant.',
     erro:'Remplissez les champs obligatoires (*) et acceptez les conditions avant d’envoyer.',
-    enviar:'Envoyer la demande', nota:'Votre demande part par email à l’équipe de l’île choisie. Si vous préférez, utilisez WhatsApp.', aEnviar:'Envoi en cours…',
+    enviar:'Envoyer la demande', nota:'Votre demande part par email à l’équipe de l’île choisie. Si vous préférez, utilisez WhatsApp.', aEnviar:'Envoi en cours…', humano:'Confirmez que vous êtes une personne (case de vérification) avant d’envoyer.',
     resumoT:'Résumé de la demande', tipo:'Type', datas:'Dates', deposito:'Acompte', depositoV:'50 % pour confirmer',
     seguirT:'Ce qui se passe ensuite',
     seguir:[

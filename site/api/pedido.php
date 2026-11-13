@@ -62,6 +62,29 @@ if ($nome === '' || $tel === '' || $ilha === '' || !filter_var($email, FILTER_VA
   responde(422, ['ok' => false, 'erro' => 'campos']);
 }
 
+/* ---------- verificação humana (Google reCAPTCHA v2) ----------
+ * Só está ativa quando existe 'recaptcha_secret' na configuração privada.
+ * Recusa quando a Google diz que a confirmação não é válida. Se a Google
+ * não responder, o pedido passa (com registo): não se perdem reservas por uma avaria. */
+$ip = $_SERVER['REMOTE_ADDR'] ?? '0';
+$segredo = (string)($CFG['recaptcha_secret'] ?? '');
+if ($segredo !== '') {
+  $token = is_string($d['humano'] ?? null) ? substr($d['humano'], 0, 2100) : '';
+  if ($token === '') responde(403, ['ok' => false, 'erro' => 'humano']);
+  $ctx = stream_context_create(['http' => [
+    'method' => 'POST', 'timeout' => 8, 'ignore_errors' => true,
+    'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+    'content' => http_build_query(['secret' => $segredo, 'response' => $token, 'remoteip' => $ip]),
+  ]]);
+  $resp = @file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $ctx);
+  $v = is_string($resp) ? json_decode($resp, true) : null;
+  if (!is_array($v) || !array_key_exists('success', $v)) {
+    error_log('[scooter-quad pedido] reCAPTCHA sem resposta, pedido aceite sem verificação');
+  } elseif ($v['success'] !== true) {
+    responde(403, ['ok' => false, 'erro' => 'humano']);
+  }
+}
+
 /* linhas do pedido já com as etiquetas no idioma do cliente: [[etiqueta, valor], ...] */
 $linhas = [];
 foreach (array_slice(is_array($d['linhas'] ?? null) ? $d['linhas'] : [], 0, 20) as $l) {
@@ -72,7 +95,6 @@ foreach (array_slice(is_array($d['linhas'] ?? null) ? $d['linhas'] : [], 0, 20) 
 
 /* ---------- limite simples por IP: 8 pedidos por 10 minutos ---------- */
 @mkdir($PRIVADO . '/pedidos', 0750, true);
-$ip = $_SERVER['REMOTE_ADDR'] ?? '0';
 $fIp = $PRIVADO . '/pedidos/ip-' . hash('sha256', $ip . date('YmdH') . floor((int)date('i') / 10)) . '.txt';
 $n = (int)@file_get_contents($fIp);
 if ($n >= 8) responde(429, ['ok' => false, 'erro' => 'limite']);
@@ -114,8 +136,14 @@ $corpo .= "\n--\nEnviado pelo formulário de " . ($_SERVER['HTTP_HOST'] ?? 'scoo
 
 /* ---------- envio ---------- */
 require __DIR__ . '/smtp.php';
+require __DIR__ . '/email-html.php';
 try {
-  envia_email($CFG, $para, $cc, $email, $nome, $assunto, $corpo);
+  /* 'email_html' => false na configuração privada volta ao email só de texto */
+  $html = !($CFG['email_html'] ?? true) ? '' : email_html(['ref' => $ref, 'tipo' => $tipo, 'ilha' => $ilha, 'nome' => $nome, 'tel' => $tel,
+                      'email' => $email, 'linhas' => $linhas, 'quando' => date('d/m/Y H:i'),
+                      'host' => $_SERVER['HTTP_HOST'] ?? 'www.scooter-quad.com',
+                      'base' => $CFG['site_url'] ?? 'https://www.scooter-quad.com']);
+  envia_email($CFG, $para, $cc, $email, $nome, $assunto, $corpo, $html);
 } catch (Throwable $e) {
   error_log('[scooter-quad pedido ' . $ref . '] ' . $e->getMessage());
   responde(502, ['ok' => false, 'erro' => 'envio', 'ref' => $ref]);
